@@ -1,3 +1,9 @@
 node_modules
+<<<<<<< HEAD
 dbConnect.ts
 dbConnect.js
+=======
+
+/app/dist/js/config/dbConnect.js
+/app/src/config/dbConnect.ts
+>>>>>>> ccff33a9b14f95676ba9547ad10cf35a7cb6c168
