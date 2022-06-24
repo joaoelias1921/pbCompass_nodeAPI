@@ -1,1 +1,4 @@
 node_modules
+
+/app/dist/js/config/dbConnect.js
+/app/src/config/dbConnect.ts
