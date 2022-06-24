@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-// coleção no mongoDB
+// mongoDB collection
 const users = mongoose.models.users || mongoose.model('users', userSchema);
 
 export default users;
