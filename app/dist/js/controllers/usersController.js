@@ -13,12 +13,12 @@ UserController.listUsers = (req, res) => {
 };
 UserController.listUserById = (req, res) => {
     const id = req.params.id;
-    User_js_1.default.findById(id, (err, livros) => {
+    User_js_1.default.findById(id, (err, users) => {
         if (err) {
             res.status(404).send({ message: `${err.message} - User not found!` });
         }
         else {
-            res.status(200).send(livros);
+            res.status(200).send(users);
         }
     });
 };

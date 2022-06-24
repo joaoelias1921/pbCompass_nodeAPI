@@ -19,6 +19,6 @@ const userSchema = new mongoose_1.default.Schema({
     country: { type: String, required: true },
     zipCode: { type: String, required: true }
 });
-// coleção no mongoDB
+// mongoDB collection
 const users = mongoose_1.default.models.users || mongoose_1.default.model('users', userSchema);
 exports.default = users;

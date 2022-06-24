@@ -10,11 +10,11 @@ class UserController {
     static listUserById = (req, res) => {
         const id = req.params.id;
 
-        users.findById(id, (err, livros) => {
+        users.findById(id, (err, users) => {
             if(err) {
                 res.status(404).send({message: `${err.message} - User not found!`});
             } else {
-                res.status(200).send(livros);
+                res.status(200).send(users);
             }
         });
     }
