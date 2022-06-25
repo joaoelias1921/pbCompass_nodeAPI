@@ -1,0 +1,102 @@
+@import '../abstract/variables';
+
+.top-section {
+    width: 100%;
+    background-color: #e2f8ff;
+    border-bottom: 2px solid lightblue;
+    @include centered();
+    .title-container {
+        margin: 3% auto 2% auto;
+        width: 90%;
+        border-bottom: 2px solid lightblue;
+        border-width: 5px;
+        h1 {
+            font-weight: bold;
+            font-size: 2rem;
+            padding-bottom: 1%;
+        }
+    }
+    .buttons-container {
+        width: 100%;
+        margin-bottom: 3%;
+        @include centered();
+        justify-content: space-evenly;
+        flex-direction: row;
+        button {
+            padding: 20px;
+            background-color: white;
+            font-family: $font;
+            font-weight: bold;
+            outline: none;
+            border: 2px solid lightblue;
+            border-radius: 15px;
+            transition: 240ms ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: lightblue;
+                color: white;
+            }
+        }
+    }
+}
+
+.main-content {
+    width: 100%;
+    margin-top: 3%;
+    @include centered();
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: row;
+    .users-container {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 20px;
+        border: 2px solid lightblue;
+        border-radius: 10px;
+        word-wrap: break-word;
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin-bottom: 10%;
+        }
+        #users {
+            li {
+                margin-bottom: 2%;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .last-li {
+                margin-bottom: 8%;
+            }
+        }
+    }
+    .tasks-container {
+        width: 40%;
+        text-align: left;
+        padding: 20px;
+        border: 2px solid lightblue;
+        border-radius: 10px;
+        word-wrap: break-word;
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin-bottom: 10%;
+        }
+        #tasks {
+            li {
+                margin-bottom: 2%;
+                span {
+                    font-weight: bold;
+                }
+            }
+            .last-li {
+                margin-bottom: 8%;
+            }
+        }
+    }
+}
