@@ -22,10 +22,12 @@ return tasks.map(function(task) {
 
     let edit = document.createElement('button');
     edit.innerHTML = "Edit";
+    edit.classList.add("edit-btn")
     edit.setAttribute('onclick', 'editTask(this)');
     edit.setAttribute('id', task._id);
     let remove = document.createElement('button');
     remove.innerHTML = "Remove";
+    remove.classList.add("remove-btn");
     remove.setAttribute('onclick', 'removeTask(this)');
     remove.setAttribute('id', task._id);
 

@@ -26,9 +26,6 @@ function listUsers(users){
         let country = document.createElement('li');
         let zipCode = document.createElement('li');
         ul.classList.add("user-ul");
-        name.id = "name";
-        cpf.id = "cpf";
-        email.id = "email";
 
         name.innerHTML = `<span>Name: </span>${user.name}`;
         cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
@@ -114,7 +111,7 @@ userSearch.addEventListener("input", function(){
             let expressao = new RegExp(this.value, "i");
 
             for(let i = 0; i < allLi.length; i++){
-                searchString += allLi[i].textContent?.split(" ")[1] as string;
+                searchString += allLi[i].textContent?.split(": ")[1] as string;
             }
 
             !expressao.test(searchString) ? 

@@ -113,11 +113,81 @@
             margin-bottom: 10%;
         }
         .task-ul {
+            width: 100%;
+            @include centered();
+            align-items: flex-start;
             margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
                 span {
                     font-weight: bold;
+                }
+            }
+            .edit-btn {
+                padding: 10px;
+                margin-top: 5%;
+                margin-bottom: 2%;
+                width: 30%;
+                background-color: #5fd7ff;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
+                border: 2px solid #5fd7ff;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #5fd7ff;
+                    border: 2px solid #5fd7ff;
+                }
+            }
+            .remove-btn {
+                padding: 10px;
+                width: 30%;
+                background-color: #ff5555;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
+                border: 2px solid #ff5555;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #ff5555;
+                    border: 2px solid #ff5555;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .filters-container {
+        flex-direction: column;
+        margin-top: 5%;
+        width: 100%;
+        .filter {
+            width: 80%;
+            margin-bottom: 3%;
+        }
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        .users-container {
+            width: 80%;
+            margin-bottom: 10%;
+        }
+        .tasks-container {
+            width: 80%;
+            .task-ul {
+                .edit-btn, .remove-btn {
+                    width: 100%;
                 }
             }
         }

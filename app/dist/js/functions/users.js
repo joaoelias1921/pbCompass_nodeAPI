@@ -25,9 +25,6 @@ function listUsers(users) {
         let country = document.createElement('li');
         let zipCode = document.createElement('li');
         ul.classList.add("user-ul");
-        name.id = "name";
-        cpf.id = "cpf";
-        email.id = "email";
         name.innerHTML = `<span>Name: </span>${user.name}`;
         cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
         birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
@@ -105,7 +102,7 @@ userSearch.addEventListener("input", function () {
             var searchString = "";
             let expressao = new RegExp(this.value, "i");
             for (let i = 0; i < allLi.length; i++) {
-                searchString += (_a = allLi[i].textContent) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
+                searchString += (_a = allLi[i].textContent) === null || _a === void 0 ? void 0 : _a.split(": ")[1];
             }
             !expressao.test(searchString) ?
                 userCard.classList.add("invisible") :
