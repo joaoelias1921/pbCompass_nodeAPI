@@ -1,5 +1,5 @@
 "use strict";
-function fetchData() {
+function fetchUsers() {
     fetch('http://localhost:3000/users')
         .then(function (response) {
         return response.json();

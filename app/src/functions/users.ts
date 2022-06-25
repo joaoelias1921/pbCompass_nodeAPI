@@ -1,5 +1,5 @@
 
-function fetchData() {
+function fetchUsers() {
     fetch('http://localhost:3000/users')
     .then(function(response){
         return response.json();
@@ -59,18 +59,18 @@ function listUsers(users){
 }
 
 function addUser() {
-    const name = document.getElementById('name')!;
-    const cpf = document.getElementById('cpf')!;
-    const birthDate = document.getElementById('birthDate')!;
-    const email = document.getElementById('email')!;
-    const password = document.getElementById('password')!;
-    const address = document.getElementById('address')!;
-    const number = document.getElementById('number')!;
-    const complement = document.getElementById('complement')!;
-    const city = document.getElementById('city')!;
-    const state = document.getElementById('state')!;
-    const country = document.getElementById('country')!;
-    const zipCode = document.getElementById('zipCode')!;
+    const name = document.getElementById('name')! as HTMLInputElement;
+    const cpf = document.getElementById('cpf')! as HTMLInputElement;
+    const birthDate = document.getElementById('birthDate')! as HTMLInputElement;
+    const email = document.getElementById('email')! as HTMLInputElement;
+    const password = document.getElementById('password')! as HTMLInputElement;
+    const address = document.getElementById('address')! as HTMLInputElement;
+    const number = document.getElementById('number')! as HTMLInputElement;
+    const complement = document.getElementById('complement')! as HTMLInputElement;
+    const city = document.getElementById('city')! as HTMLInputElement;
+    const state = document.getElementById('state')! as HTMLInputElement;
+    const country = document.getElementById('country')! as HTMLInputElement;
+    const zipCode = document.getElementById('zipCode')! as HTMLInputElement;
 
     let data = {
         name: `${name.value}`, 

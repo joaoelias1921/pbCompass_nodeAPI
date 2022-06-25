@@ -29,9 +29,9 @@ return tasks.map(function(task) {
 
 
 function addTask() {
-    const description = document.getElementById('description')!;
-    const datetime = document.getElementById('time')!;
-    const user = document.getElementById('user')!;
+    const description = document.getElementById('description')! as HTMLInputElement;
+    const datetime = document.getElementById('time')! as HTMLInputElement;
+    const user = document.getElementById('user')! as HTMLInputElement;
 
     let data = {
         description: `${description.value}`, 
