@@ -12,7 +12,7 @@ function fetchUsers() {
 
 function listUsers(users){
     return users.map(function(user) {
-        const ul = document.getElementById('users')!;
+        let ul = document.createElement('ul')!;
         let name = document.createElement('li');
         let cpf = document.createElement('li');
         let birthDate = document.createElement('li');
@@ -25,9 +25,11 @@ function listUsers(users){
         let state = document.createElement('li');
         let country = document.createElement('li');
         let zipCode = document.createElement('li');
-        zipCode.classList.add("last-li");
+        ul.classList.add("user-ul");
+        name.id = "name";
+        cpf.id = "cpf";
+        email.id = "email";
 
-    
         name.innerHTML = `<span>Name: </span>${user.name}`;
         cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
         birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
@@ -41,7 +43,6 @@ function listUsers(users){
         country.innerHTML = `<span>Country: </span>${user.country}`;
         zipCode.innerHTML = `<span>Zip Code: </span>${user.zipCode}`;
 
-
         ul.appendChild(name);
         ul.appendChild(cpf);
         ul.appendChild(birthDate);
@@ -54,6 +55,7 @@ function listUsers(users){
         ul.appendChild(state);
         ul.appendChild(country);
         ul.appendChild(zipCode);
+        document.querySelector(".users-container")?.appendChild(ul);
     });
 }
 
@@ -99,3 +101,30 @@ function addUser() {
     });
     
 }
+
+const userSearch = document.getElementById("user-search")! as HTMLInputElement;
+userSearch.addEventListener("input", function(){
+    var userCards = document.querySelectorAll(".user-ul");
+
+    if (userSearch.value.length > 0){
+        for (var i = 0; i < userCards.length; i++){
+            var userCard = userCards[i];
+            var allLi = userCard.querySelectorAll("li")!;
+            var searchString = "";
+            let expressao = new RegExp(this.value, "i");
+
+            for(let i = 0; i < allLi.length; i++){
+                searchString += allLi[i].textContent?.split(" ")[1] as string;
+            }
+
+            !expressao.test(searchString) ? 
+                userCard.classList.add("invisible") : 
+                    userCard.classList.remove("invisible");
+        }
+    }else{
+        for (var i = 0; i < userCards.length; i++) {
+            var userCard = userCards[i];
+            userCard.classList.remove("invisible");
+        }
+    }
+});

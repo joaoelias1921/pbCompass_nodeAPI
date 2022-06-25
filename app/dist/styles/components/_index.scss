@@ -1,5 +1,9 @@
 @import '../abstract/variables';
 
+.invisible {
+    display: none;
+}
+
 .top-section {
     width: 100%;
     background-color: #e2f8ff;
@@ -40,6 +44,29 @@
     }
 }
 
+.filters-container {
+    width: 100%;
+    @include centered();
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2% auto;
+    .filter {
+        width: 40%;
+        input {
+            width: 100%;
+            padding: 15px;
+            font-family: $font;
+            border: 1px solid #5fd7ff;
+            outline: none;
+            border-radius: 10px;
+            transition: 240ms ease-in-out;
+            &:hover, &:focus {
+                background-color: #f0fbff;
+            }
+        }
+    }
+}
+
 .main-content {
     width: 100%;
     margin-top: 3%;
@@ -62,15 +89,13 @@
             font-size: 1.6rem;
             margin-bottom: 10%;
         }
-        #users {
+        .user-ul {
+            margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
                 span {
                     font-weight: bold;
                 }
-            }
-            .last-li {
-                margin-bottom: 8%;
             }
         }
     }
@@ -87,15 +112,13 @@
             font-size: 1.6rem;
             margin-bottom: 10%;
         }
-        #tasks {
+        .task-ul {
+            margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
                 span {
                     font-weight: bold;
                 }
-            }
-            .last-li {
-                margin-bottom: 8%;
             }
         }
     }
