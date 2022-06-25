@@ -1,0 +1,19 @@
+@import './variables';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+    font-family: $font;
+}
+
+@mixin centered() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;  
+}

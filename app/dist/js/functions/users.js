@@ -1,5 +1,5 @@
 "use strict";
-function fetchData() {
+function fetchUsers() {
     fetch('http://localhost:3000/users')
         .then(function (response) {
         return response.json();
@@ -11,44 +11,43 @@ function fetchData() {
 function listUsers(users) {
     return users.map(function (user) {
         const ul = document.getElementById('users');
-        let li = document.createElement('li');
-        let name = document.createElement('p');
-        let cpf = document.createElement('p');
-        let birthDate = document.createElement('p');
-        let email = document.createElement('p');
-        let password = document.createElement('p');
-        let address = document.createElement('p');
-        let number = document.createElement('p');
-        let complement = document.createElement('p');
-        let city = document.createElement('p');
-        let state = document.createElement('p');
-        let country = document.createElement('p');
-        let zipCode = document.createElement('p');
-        name.innerHTML = `${user.name}`;
-        cpf.innerHTML = `${user.cpf}`;
-        birthDate.innerHTML = `${user.birthDate}`;
-        email.innerHTML = `${user.email}`;
-        password.innerHTML = `${user.password}`;
-        address.innerHTML = `${user.address}`;
-        number.innerHTML = `${user.number}`;
-        complement.innerHTML = `${user.complement}`;
-        city.innerHTML = `${user.city}`;
-        state.innerHTML = `${user.state}`;
-        country.innerHTML = `${user.country}`;
-        zipCode.innerHTML = `${user.zipCode}`;
-        li.appendChild(name);
-        li.appendChild(cpf);
-        li.appendChild(birthDate);
-        li.appendChild(email);
-        li.appendChild(password);
-        li.appendChild(address);
-        li.appendChild(number);
-        li.appendChild(complement);
-        li.appendChild(city);
-        li.appendChild(state);
-        li.appendChild(country);
-        li.appendChild(zipCode);
-        ul.appendChild(li);
+        let name = document.createElement('li');
+        let cpf = document.createElement('li');
+        let birthDate = document.createElement('li');
+        let email = document.createElement('li');
+        let password = document.createElement('li');
+        let address = document.createElement('li');
+        let number = document.createElement('li');
+        let complement = document.createElement('li');
+        let city = document.createElement('li');
+        let state = document.createElement('li');
+        let country = document.createElement('li');
+        let zipCode = document.createElement('li');
+        zipCode.classList.add("last-li");
+        name.innerHTML = `<span>Name: </span>${user.name}`;
+        cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
+        birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
+        email.innerHTML = `<span>Email: </span>${user.email}`;
+        password.innerHTML = `<span>Password: </span>${user.password}`;
+        address.innerHTML = `<span>Address: </span>${user.address}`;
+        number.innerHTML = `<span>Number: </span>${user.number}`;
+        complement.innerHTML = `<span>Complement: </span>${user.complement}`;
+        city.innerHTML = `<span>City: </span>${user.city}`;
+        state.innerHTML = `<span>State: </span>${user.state}`;
+        country.innerHTML = `<span>Country: </span>${user.country}`;
+        zipCode.innerHTML = `<span>Zip Code: </span>${user.zipCode}`;
+        ul.appendChild(name);
+        ul.appendChild(cpf);
+        ul.appendChild(birthDate);
+        ul.appendChild(email);
+        ul.appendChild(password);
+        ul.appendChild(address);
+        ul.appendChild(number);
+        ul.appendChild(complement);
+        ul.appendChild(city);
+        ul.appendChild(state);
+        ul.appendChild(country);
+        ul.appendChild(zipCode);
     });
 }
 function addUser() {

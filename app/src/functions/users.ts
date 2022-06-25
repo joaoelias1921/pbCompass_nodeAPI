@@ -1,5 +1,5 @@
 
-function fetchData() {
+function fetchUsers() {
     fetch('http://localhost:3000/users')
     .then(function(response){
         return response.json();
@@ -13,64 +13,63 @@ function fetchData() {
 function listUsers(users){
     return users.map(function(user) {
         const ul = document.getElementById('users')!;
-        let li = document.createElement('li');
-        let name = document.createElement('p');
-        let cpf = document.createElement('p');
-        let birthDate = document.createElement('p');
-        let email = document.createElement('p');
-        let password = document.createElement('p');
-        let address = document.createElement('p');
-        let number = document.createElement('p');
-        let complement = document.createElement('p');
-        let city = document.createElement('p');
-        let state = document.createElement('p');
-        let country = document.createElement('p');
-        let zipCode = document.createElement('p');
+        let name = document.createElement('li');
+        let cpf = document.createElement('li');
+        let birthDate = document.createElement('li');
+        let email = document.createElement('li');
+        let password = document.createElement('li');
+        let address = document.createElement('li');
+        let number = document.createElement('li');
+        let complement = document.createElement('li');
+        let city = document.createElement('li');
+        let state = document.createElement('li');
+        let country = document.createElement('li');
+        let zipCode = document.createElement('li');
+        zipCode.classList.add("last-li");
 
     
-        name.innerHTML = `${user.name}`;
-        cpf.innerHTML = `${user.cpf}`;
-        birthDate.innerHTML = `${user.birthDate}`;
-        email.innerHTML = `${user.email}`;
-        password.innerHTML = `${user.password}`;
-        address.innerHTML = `${user.address}`;
-        number.innerHTML = `${user.number}`;
-        complement.innerHTML = `${user.complement}`;
-        city.innerHTML = `${user.city}`;
-        state.innerHTML = `${user.state}`;
-        country.innerHTML = `${user.country}`;
-        zipCode.innerHTML = `${user.zipCode}`;
+        name.innerHTML = `<span>Name: </span>${user.name}`;
+        cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
+        birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
+        email.innerHTML = `<span>Email: </span>${user.email}`;
+        password.innerHTML = `<span>Password: </span>${user.password}`;
+        address.innerHTML = `<span>Address: </span>${user.address}`;
+        number.innerHTML = `<span>Number: </span>${user.number}`;
+        complement.innerHTML = `<span>Complement: </span>${user.complement}`;
+        city.innerHTML = `<span>City: </span>${user.city}`;
+        state.innerHTML = `<span>State: </span>${user.state}`;
+        country.innerHTML = `<span>Country: </span>${user.country}`;
+        zipCode.innerHTML = `<span>Zip Code: </span>${user.zipCode}`;
 
 
-        li.appendChild(name);
-        li.appendChild(cpf);
-        li.appendChild(birthDate);
-        li.appendChild(email);
-        li.appendChild(password);
-        li.appendChild(address);
-        li.appendChild(number);
-        li.appendChild(complement);
-        li.appendChild(city);
-        li.appendChild(state);
-        li.appendChild(country);
-        li.appendChild(zipCode);
-        ul.appendChild(li);
+        ul.appendChild(name);
+        ul.appendChild(cpf);
+        ul.appendChild(birthDate);
+        ul.appendChild(email);
+        ul.appendChild(password);
+        ul.appendChild(address);
+        ul.appendChild(number);
+        ul.appendChild(complement);
+        ul.appendChild(city);
+        ul.appendChild(state);
+        ul.appendChild(country);
+        ul.appendChild(zipCode);
     });
 }
 
 function addUser() {
-    const name = document.getElementById('name')!;
-    const cpf = document.getElementById('cpf')!;
-    const birthDate = document.getElementById('birthDate')!;
-    const email = document.getElementById('email')!;
-    const password = document.getElementById('password')!;
-    const address = document.getElementById('address')!;
-    const number = document.getElementById('number')!;
-    const complement = document.getElementById('complement')!;
-    const city = document.getElementById('city')!;
-    const state = document.getElementById('state')!;
-    const country = document.getElementById('country')!;
-    const zipCode = document.getElementById('zipCode')!;
+    const name = document.getElementById('name')! as HTMLInputElement;
+    const cpf = document.getElementById('cpf')! as HTMLInputElement;
+    const birthDate = document.getElementById('birthDate')! as HTMLInputElement;
+    const email = document.getElementById('email')! as HTMLInputElement;
+    const password = document.getElementById('password')! as HTMLInputElement;
+    const address = document.getElementById('address')! as HTMLInputElement;
+    const number = document.getElementById('number')! as HTMLInputElement;
+    const complement = document.getElementById('complement')! as HTMLInputElement;
+    const city = document.getElementById('city')! as HTMLInputElement;
+    const state = document.getElementById('state')! as HTMLInputElement;
+    const country = document.getElementById('country')! as HTMLInputElement;
+    const zipCode = document.getElementById('zipCode')! as HTMLInputElement;
 
     let data = {
         name: `${name.value}`, 
