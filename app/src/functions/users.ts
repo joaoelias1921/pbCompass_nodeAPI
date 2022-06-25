@@ -108,13 +108,13 @@ userSearch.addEventListener("input", function(){
             var userCard = userCards[i];
             var allLi = userCard.querySelectorAll("li")!;
             var searchString = "";
-            let expressao = new RegExp(this.value, "i");
+            let regex = new RegExp(this.value, "i");
 
             for(let i = 0; i < allLi.length; i++){
                 searchString += allLi[i].textContent?.split(": ")[1] as string;
             }
 
-            !expressao.test(searchString) ? 
+            !regex.test(searchString) ? 
                 userCard.classList.add("invisible") : 
                     userCard.classList.remove("invisible");
         }

@@ -71,19 +71,23 @@ taskSearch.addEventListener("input", function () {
             var descLi = taskCard.querySelector("#description");
             var dateLi = taskCard.querySelector("#date");
             var userLi = taskCard.querySelector("#user");
-            let expressao = new RegExp(this.value, "i");
+            let regex = new RegExp(this.value, "i");
             var searchString = (_a = descLi.textContent) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
             searchString += (_b = dateLi.textContent) === null || _b === void 0 ? void 0 : _b.split("date: ")[1];
             searchString += (_c = userLi.textContent) === null || _c === void 0 ? void 0 : _c.split(" ")[1];
-            !expressao.test(searchString) ?
-                taskCard.classList.add("invisible") :
-                taskCard.classList.remove("invisible");
+            if (!regex.test(searchString)) {
+                taskCard.style.display = "none";
+            }
+            else {
+                console.log(searchString);
+                taskCard.style.display = "flex";
+            }
         }
     }
     else {
         for (var i = 0; i < taskCards.length; i++) {
             var taskCard = taskCards[i];
-            taskCard.classList.remove("invisible");
+            taskCard.style.display = "flex";
         }
     }
 });

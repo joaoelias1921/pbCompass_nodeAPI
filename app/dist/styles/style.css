@@ -9,10 +9,6 @@ html, body {
   font-family: "Poppins", sans-serif;
 }
 
-.invisible {
-  display: none;
-}
-
 .top-section {
   width: 100%;
   background-color: #e2f8ff;
@@ -70,11 +66,33 @@ html, body {
       flex-direction: row;
 }
 
-.top-section .buttons-container button {
+.top-section .buttons-container .newUser-btn, .top-section .buttons-container .newTask-btn {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.top-section .buttons-container .newUser-btn button, .top-section .buttons-container .newTask-btn button {
   padding: 20px;
+  width: 100%;
   background-color: white;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
+  font-size: 1rem;
   outline: none;
   border: 2px solid lightblue;
   border-radius: 15px;
@@ -83,7 +101,7 @@ html, body {
   cursor: pointer;
 }
 
-.top-section .buttons-container button:hover {
+.top-section .buttons-container .newUser-btn button:hover, .top-section .buttons-container .newTask-btn button:hover {
   background-color: lightblue;
   color: white;
 }
@@ -283,7 +301,21 @@ html, body {
   border: 2px solid #ff5555;
 }
 
+.invisible {
+  display: none;
+}
+
 @media screen and (max-width: 790px) {
+  .top-section .buttons-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .top-section .buttons-container .newUser-btn, .top-section .buttons-container .newTask-btn {
+    width: 80%;
+    margin: 3% auto;
+  }
   .filters-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
