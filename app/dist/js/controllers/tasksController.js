@@ -30,7 +30,7 @@ TaskController.addTask = (req, res) => {
     let task = new Task_js_1.default(req.body);
     task.save((err) => {
         if (err) {
-            res.status(500).send({ message: `${err.message} - Something went wrong, the Task has not been added!` });
+            res.status(404).send({ message: `${err.message} - Something went wrong, the Task has not been added!` });
         }
         else {
             res.status(201).send(task.toJSON());
@@ -44,7 +44,7 @@ TaskController.updateTask = (req, res) => {
             res.status(200).send({ message: "Task updated successfully!" });
         }
         else {
-            res.status(500).send({ message: err.message });
+            res.status(404).send({ message: err.message });
         }
     });
 };
@@ -52,10 +52,10 @@ TaskController.deleteTasks = (req, res) => {
     const id = req.params.id;
     Task_js_1.default.findByIdAndDelete(id, (err) => {
         if (!err) {
-            res.status(200).send({ message: "Task deleted sucessfully!" });
+            res.status(204).send({ message: "Task deleted sucessfully!" });
         }
         else {
-            res.status(500).send({ message: err.message });
+            res.status(404).send({ message: err.message });
         }
     });
 };
