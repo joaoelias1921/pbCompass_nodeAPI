@@ -1,5 +1,5 @@
 "use strict";
-function fetchData() {
+function fetchTasks() {
     fetch('http://localhost:3000/tasks')
         .then(function (response) {
         return response.json();
@@ -15,12 +15,22 @@ function listTasks(tasks) {
         let user = document.createElement('li');
         let date = document.createElement('li');
         user.classList.add("last-li");
+        let edit = document.createElement('button');
+        edit.innerHTML = "Edit";
+        edit.setAttribute('onclick', 'editTask(this)');
+        edit.setAttribute('id', task._id);
+        let remove = document.createElement('button');
+        remove.innerHTML = "Remove";
+        remove.setAttribute('onclick', 'removeTask(this)');
+        remove.setAttribute('id', task._id);
         description.innerHTML = `<span>Description: </span>${task.description}`;
         date.innerHTML = `<span>Task date: </span>${task.date}`;
         user.innerHTML = `<span>User: </span>${task.user}`;
         ul.appendChild(description);
         ul.appendChild(date);
         ul.appendChild(user);
+        ul.appendChild(edit);
+        ul.appendChild(remove);
     });
 }
 function addTask() {
@@ -43,4 +53,42 @@ function addTask() {
         .then(function (json) {
         console.log(json);
     });
+}
+function editTask(p) {
+    fetch(`http://localhost:3000/tasks/${p.id}`, {
+        method: "GET"
+    }).then(function (response) {
+        return response.json();
+    })
+        .then(function (data) {
+        populateInputTask(data);
+    });
+}
+function populateInputTask(data) {
+    const description = document.getElementById('description');
+    const datetime = document.getElementById('time');
+    const user = document.getElementById('user');
+    description.value = data.description;
+    datetime.value = data.date;
+    user.value = data.user._id;
+}
+function removeTask(p) {
+    fetch(`http://localhost:3000/tasks/${p.id}`, {
+        method: "DELETE"
+    })
+        .then(res => {
+        if (res.ok) {
+            console.log("HTTP request successful");
+        }
+        else {
+            console.log("HTTP request unsuccessful");
+        }
+        return res;
+    })
+        .then(function (res) {
+        return res.json();
+    })
+        .then(data => listTasks(data))
+        .catch(error => console.log(error));
+    //window.location.reload();
 }
