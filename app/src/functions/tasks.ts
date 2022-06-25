@@ -74,24 +74,27 @@ taskSearch.addEventListener("input", function(){
 
     if (taskSearch.value.length > 0){
         for (var i = 0; i < taskCards.length; i++){
-            var taskCard = taskCards[i];
+            var taskCard = taskCards[i] as HTMLElement;
             var descLi = taskCard.querySelector("#description")!;
             var dateLi = taskCard.querySelector("#date")!;
             var userLi = taskCard.querySelector("#user")!;
-            let expressao = new RegExp(this.value, "i");
+            let regex = new RegExp(this.value, "i");
 
             var searchString = descLi.textContent?.split(" ")[1] as string;
             searchString += dateLi.textContent?.split("date: ")[1];
             searchString += userLi.textContent?.split(" ")[1];
 
-            !expressao.test(searchString) ? 
-                taskCard.classList.add("invisible") : 
-                    taskCard.classList.remove("invisible");
+            if (!regex.test(searchString)) { 
+                taskCard.style.display = "none";
+            } else {
+                console.log(searchString);
+                taskCard.style.display = "flex";
+            }
         }
     }else{
         for (var i = 0; i < taskCards.length; i++) {
-            var taskCard = taskCards[i];
-            taskCard.classList.remove("invisible");
+            var taskCard = taskCards[i] as HTMLElement;
+            taskCard.style.display = "flex";
         }
     }
 });

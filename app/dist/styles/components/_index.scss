@@ -1,9 +1,5 @@
 @import '../abstract/variables';
 
-.invisible {
-    display: none;
-}
-
 .top-section {
     width: 100%;
     background-color: #e2f8ff;
@@ -26,19 +22,26 @@
         @include centered();
         justify-content: space-evenly;
         flex-direction: row;
-        button {
-            padding: 20px;
-            background-color: white;
-            font-family: $font;
-            font-weight: bold;
-            outline: none;
-            border: 2px solid lightblue;
-            border-radius: 15px;
-            transition: 240ms ease-in-out;
-            cursor: pointer;
-            &:hover {
-                background-color: lightblue;
-                color: white;
+        .newUser-btn, .newTask-btn {
+            width: 40%;
+            @include centered();
+            flex-direction: row;
+            button {
+                padding: 20px;
+                width: 100%;
+                background-color: white;
+                font-family: $font;
+                font-weight: bold;
+                font-size: 1rem;
+                outline: none;
+                border: 2px solid lightblue;
+                border-radius: 15px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: lightblue;
+                    color: white;
+                }
             }
         }
     }
@@ -165,7 +168,21 @@
     }
 }
 
+.invisible {
+    display: none;
+}
+
 @media screen and (max-width: 790px) {
+    .top-section {
+        .buttons-container {
+            flex-direction: column;
+            .newUser-btn, .newTask-btn {
+                width: 80%;
+                margin: 3% auto;
+            }
+        }
+    }
+
     .filters-container {
         flex-direction: column;
         margin-top: 5%;
