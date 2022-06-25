@@ -10,7 +10,8 @@ function fetchUsers() {
 }
 function listUsers(users) {
     return users.map(function (user) {
-        const ul = document.getElementById('users');
+        var _a;
+        let ul = document.createElement('ul');
         let name = document.createElement('li');
         let cpf = document.createElement('li');
         let birthDate = document.createElement('li');
@@ -23,7 +24,7 @@ function listUsers(users) {
         let state = document.createElement('li');
         let country = document.createElement('li');
         let zipCode = document.createElement('li');
-        zipCode.classList.add("last-li");
+        ul.classList.add("user-ul");
         name.innerHTML = `<span>Name: </span>${user.name}`;
         cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
         birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
@@ -48,6 +49,7 @@ function listUsers(users) {
         ul.appendChild(state);
         ul.appendChild(country);
         ul.appendChild(zipCode);
+        (_a = document.querySelector(".users-container")) === null || _a === void 0 ? void 0 : _a.appendChild(ul);
     });
 }
 function addUser() {
@@ -89,3 +91,28 @@ function addUser() {
         console.log(json);
     });
 }
+const userSearch = document.getElementById("user-search");
+userSearch.addEventListener("input", function () {
+    var _a;
+    var userCards = document.querySelectorAll(".user-ul");
+    if (userSearch.value.length > 0) {
+        for (var i = 0; i < userCards.length; i++) {
+            var userCard = userCards[i];
+            var allLi = userCard.querySelectorAll("li");
+            var searchString = "";
+            let expressao = new RegExp(this.value, "i");
+            for (let i = 0; i < allLi.length; i++) {
+                searchString += (_a = allLi[i].textContent) === null || _a === void 0 ? void 0 : _a.split(": ")[1];
+            }
+            !expressao.test(searchString) ?
+                userCard.classList.add("invisible") :
+                userCard.classList.remove("invisible");
+        }
+    }
+    else {
+        for (var i = 0; i < userCards.length; i++) {
+            var userCard = userCards[i];
+            userCard.classList.remove("invisible");
+        }
+    }
+});
