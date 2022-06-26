@@ -12,7 +12,7 @@ function fetchUsers() {
 
 function listUsers(users){
     return users.map(function(user) {
-        const ul = document.getElementById('users')!;
+        let ul = document.createElement('ul')!;
         let name = document.createElement('li');
         let cpf = document.createElement('li');
         let birthDate = document.createElement('li');
@@ -25,7 +25,7 @@ function listUsers(users){
         let state = document.createElement('li');
         let country = document.createElement('li');
         let zipCode = document.createElement('li');
-        zipCode.classList.add("last-li");
+        ul.classList.add("user-ul");
 
         let edit = document.createElement('button');
         edit.innerHTML = "Edit";
@@ -52,7 +52,6 @@ function listUsers(users){
         country.innerHTML = `<span>Country: </span>${user.country}`;
         zipCode.innerHTML = `<span>Zip Code: </span>${user.zipCode}`;
 
-
         ul.appendChild(name);
         ul.appendChild(cpf);
         ul.appendChild(birthDate);
@@ -67,6 +66,7 @@ function listUsers(users){
         ul.appendChild(zipCode);
         ul.appendChild(edit);
         ul.appendChild(remove);
+        document.querySelector(".users-container")?.appendChild(ul);
     });
 }
 
@@ -217,3 +217,29 @@ function removeUser(p: HTMLParamElement) {
     .catch(error => console.log(error))
 
 }
+const userSearch = document.getElementById("user-search")! as HTMLInputElement;
+userSearch.addEventListener("input", function(){
+    var userCards = document.querySelectorAll(".user-ul");
+
+    if (userSearch.value.length > 0){
+        for (var i = 0; i < userCards.length; i++){
+            var userCard = userCards[i] as HTMLElement;
+            var allLi = userCard.querySelectorAll("li")!;
+            var searchString = "";
+            let regex = new RegExp(this.value, "i");
+
+            for(let i = 0; i < allLi.length; i++){
+                searchString += allLi[i].textContent?.split(": ")[1] as string;
+            }
+
+            !regex.test(searchString) ? 
+                userCard.style.display = "none" : 
+                    userCard.style.display = "flex";
+        }
+    }else{
+        for (var i = 0; i < userCards.length; i++) {
+            var userCard = userCards[i] as HTMLElement;
+            userCard.style.display = "flex";
+        }
+    }
+});

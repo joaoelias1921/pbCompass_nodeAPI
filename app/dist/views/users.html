@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>API REST</title>
+</head>
+<body onload="fetchUsers()">
+    <header>
+        <section class="top-section">
+            <div class="title-container">
+                <h1>Node API</h1>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="addUser-container">
+            <a href="../index.html">
+                <button>Go back</button>
+            </a>
+            <h1>Add a new user here!</h1>
+            <div class="form-container">
+                <form>
+                    <div class="form-row1">
+                        <input type="text" name="name" placeholder="Name" id="name">
+                        <input type="text" name="cpf" placeholder="CPF" id="cpf">
+                        <input type="date" name="birthDate" id="birthdate">
+                    </div>
+                    <div class="form-row2">
+                        <input type="email" name="email" placeholder="Email" id="email">
+                        <input type="text" name="password" placeholder="Password" id="password">
+                    </div>
+                    <div class="form-row3">
+                        <input type="text" name="address" placeholder="Address" id="address">
+                        <input type="text" name="number" placeholder="Number" id="number">
+                        <input type="text" name="complement" placeholder="Complement" id="complement">
+                    </div>
+                    <div class="form-row4">
+                        <input type="text" name="city" placeholder="City" id="city">
+                        <input type="text" name="state" placeholder="State" id="state">
+                        <input type="text" name="country" placeholder="Country" id="country">
+                        <input type="text" name="zipCode" placeholder="Zip Code" id="zipCode">
+                    </div>
+                    
+                    <button class="add-user" onclick="addUser()">Add User</button>
+                </form>
+            </div>
+        </section>
+        <section class="filters-container">
+            <div class="filter">
+                <input id="user-search" type="text" placeholder="Search a user here">
+            </div>
+        </section>
+        <section class="main-content">
+            <div class="users-container">
+                <h1>Users</h1>
+            </div>
+        </section>
+    </main>
+    <script src="../js/functions/users.js"></script>
+</body>
+</html>

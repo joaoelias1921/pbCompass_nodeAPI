@@ -11,18 +11,23 @@ function fetchTasks() {
 
 function listTasks(tasks){
 return tasks.map(function(task) {
-    const ul = document.getElementById('tasks')!;
+    let ul = document.createElement('ul')!;
     let description = document.createElement('li');
     let user = document.createElement('li');
     let date = document.createElement('li');
-    user.classList.add("last-li");
+    ul.classList.add("task-ul");
+    description.id = "description";
+    date.id = "date";
+    user.id = "user";
 
     let edit = document.createElement('button');
     edit.innerHTML = "Edit";
+    edit.classList.add("edit-btn")
     edit.setAttribute('onclick', 'editTask(this)');
     edit.setAttribute('id', task._id);
     let remove = document.createElement('button');
     remove.innerHTML = "Remove";
+    remove.classList.add("remove-btn");
     remove.setAttribute('onclick', 'removeTask(this)');
     remove.setAttribute('id', task._id);
 
@@ -32,6 +37,7 @@ return tasks.map(function(task) {
     ul.appendChild(description);
     ul.appendChild(date);
     ul.appendChild(user);
+    document.querySelector(".tasks-container")?.appendChild(ul);
     ul.appendChild(edit);
     ul.appendChild(remove);
 });
@@ -60,9 +66,35 @@ function addTask() {
     .then(function(json) {
         console.log(json);
     });
-    
 }
 
+const taskSearch = document.getElementById("task-search")! as HTMLInputElement;
+taskSearch.addEventListener("input", function(){
+    var taskCards = document.querySelectorAll(".task-ul");
+
+    if (taskSearch.value.length > 0){
+        for (var i = 0; i < taskCards.length; i++){
+            var taskCard = taskCards[i] as HTMLElement;
+            var descLi = taskCard.querySelector("#description")!;
+            var dateLi = taskCard.querySelector("#date")!;
+            var userLi = taskCard.querySelector("#user")!;
+            let regex = new RegExp(this.value, "i");
+
+            var searchString = descLi.textContent?.split(": ")[1] as string;
+            searchString += dateLi.textContent?.split("date: ")[1];
+            searchString += userLi.textContent?.split(": ")[1];
+
+            !regex.test(searchString) ? 
+                taskCard.style.display = "none" :
+                    taskCard.style.display = "flex";
+        }
+    }else{
+        for (var i = 0; i < taskCards.length; i++) {
+            var taskCard = taskCards[i] as HTMLElement;
+            taskCard.style.display = "flex";
+        }
+    }
+});
 
 function editTask(p: HTMLParamElement) {
     fetch(`http://localhost:3000/tasks/${p.id}`, {
@@ -110,8 +142,6 @@ function populateInputTask(data) {
     datetime.value = data.date;
     user.value = data.user._id;  
 }
-
-
 
 function removeTask(p: HTMLParamElement) {
 

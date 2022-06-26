@@ -16,25 +16,57 @@
             padding-bottom: 1%;
         }
     }
-    .buttons-container {
-        width: 100%;
-        margin-bottom: 3%;
+}
+
+.buttons-container {
+    width: 100%;
+    margin-top: 3%;
+    @include centered();
+    justify-content: space-evenly;
+    .newUser-btn, .newTask-btn {
+        width: 60%;
         @include centered();
-        justify-content: space-evenly;
+        margin-top: 5%;
         flex-direction: row;
         button {
             padding: 20px;
-            background-color: white;
+            width: 100%;
+            background-color: rgb(86, 213, 255);
             font-family: $font;
             font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
             outline: none;
             border: 2px solid lightblue;
             border-radius: 15px;
             transition: 240ms ease-in-out;
             cursor: pointer;
             &:hover {
-                background-color: lightblue;
-                color: white;
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}
+
+.filters-container {
+    width: 100%;
+    @include centered();
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2% auto;
+    .filter {
+        width: 80%;
+        input {
+            width: 100%;
+            padding: 15px;
+            font-family: $font;
+            border: 1px solid #5fd7ff;
+            outline: none;
+            border-radius: 10px;
+            transition: 240ms ease-in-out;
+            &:hover, &:focus {
+                background-color: #f0fbff;
             }
         }
     }
@@ -48,7 +80,7 @@
     align-items: flex-start;
     flex-direction: row;
     .users-container {
-        width: 40%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         text-align: left;
@@ -62,20 +94,21 @@
             font-size: 1.6rem;
             margin-bottom: 10%;
         }
-        #users {
+        .user-ul {
+            width: 100%;
+            @include centered();
+            align-items: flex-start;
+            margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
                 span {
                     font-weight: bold;
                 }
             }
-            .last-li {
-                margin-bottom: 8%;
-            }
         }
     }
     .tasks-container {
-        width: 40%;
+        width: 80%;
         text-align: left;
         padding: 20px;
         border: 2px solid lightblue;
@@ -87,15 +120,93 @@
             font-size: 1.6rem;
             margin-bottom: 10%;
         }
-        #tasks {
+        .task-ul {
+            width: 100%;
+            @include centered();
+            align-items: flex-start;
+            margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
                 span {
                     font-weight: bold;
                 }
             }
-            .last-li {
-                margin-bottom: 8%;
+            .edit-btn {
+                padding: 10px;
+                margin-top: 5%;
+                margin-bottom: 2%;
+                width: 30%;
+                background-color: #5fd7ff;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
+                border: 2px solid #5fd7ff;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #5fd7ff;
+                    border: 2px solid #5fd7ff;
+                }
+            }
+            .remove-btn {
+                padding: 10px;
+                width: 30%;
+                background-color: #ff5555;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
+                border: 2px solid #ff5555;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #ff5555;
+                    border: 2px solid #ff5555;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .top-section {
+        .buttons-container {
+            flex-direction: column;
+            .newUser-btn, .newTask-btn {
+                width: 80%;
+                margin: 3% auto;
+            }
+        }
+    }
+
+    .filters-container {
+        flex-direction: column;
+        margin-top: 5%;
+        width: 100%;
+        .filter {
+            width: 80%;
+            margin-bottom: 3%;
+        }
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        .users-container {
+            width: 80%;
+            margin-bottom: 10%;
+        }
+        .tasks-container {
+            width: 80%;
+            .task-ul {
+                .edit-btn, .remove-btn {
+                    width: 100%;
+                }
             }
         }
     }

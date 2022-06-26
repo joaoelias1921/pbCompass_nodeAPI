@@ -11,35 +11,27 @@
     <link rel="stylesheet" href="./styles/style.css">
     <title>API REST</title>
 </head>
-<body onload="fetchUsers(); fetchData();">
+<body>
     <header>
         <section class="top-section">
             <div class="title-container">
                 <h1>Node API</h1>
             </div>
-            <div class="buttons-container">
-                <button onclick="window.location = './views/userAdd.html';">
-                    Add New User
-                </button>
-                <button onclick="window.location = './views/taskAdd.html';">
-                    Add New Task
-                </button>
-            </div>
         </section>
     </header>
     <main>
-        <section class="main-content">
-            <div class="users-container">
-                <h1>Users</h1>
-                <ul id="users"></ul>
+        <section class="buttons-container">
+            <div class="newUser-btn">
+                <button onclick="window.location = './views/users.html';">
+                    Users
+                </button>
             </div>
-            <div class="tasks-container">
-                <h1>Tasks</h1>
-                <ul id="tasks"></ul>
+            <div class="newTask-btn">
+                <button onclick="window.location = './views/tasks.html';">
+                    Tasks
+                </button>
             </div>
         </section>
     </main> 
-    <script src="./js/functions/users.js"></script>
-    <script src="./js/functions/tasks.js"></script>
 </body>
 </html>

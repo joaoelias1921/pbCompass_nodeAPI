@@ -42,9 +42,9 @@ html, body {
   padding-bottom: 1%;
 }
 
-.top-section .buttons-container {
+.buttons-container {
   width: 100%;
-  margin-bottom: 3%;
+  margin-top: 3%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,15 +62,37 @@ html, body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+.buttons-container .newUser-btn, .buttons-container .newTask-btn {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-top: 5%;
   -ms-flex-direction: row;
       flex-direction: row;
 }
 
-.top-section .buttons-container button {
+.buttons-container .newUser-btn button, .buttons-container .newTask-btn button {
   padding: 20px;
-  background-color: white;
+  width: 100%;
+  background-color: #56d5ff;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
   outline: none;
   border: 2px solid lightblue;
   border-radius: 15px;
@@ -79,9 +101,52 @@ html, body {
   cursor: pointer;
 }
 
-.top-section .buttons-container button:hover {
-  background-color: lightblue;
-  color: white;
+.buttons-container .newUser-btn button:hover, .buttons-container .newTask-btn button:hover {
+  background-color: white;
+  color: black;
+}
+
+.filters-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 2% auto;
+}
+
+.filters-container .filter {
+  width: 80%;
+}
+
+.filters-container .filter input {
+  width: 100%;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  border: 1px solid #5fd7ff;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+}
+
+.filters-container .filter input:hover, .filters-container .filter input:focus {
+  background-color: #f0fbff;
 }
 
 .main-content {
@@ -112,7 +177,7 @@ html, body {
 }
 
 .main-content .users-container {
-  width: 40%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,20 +199,38 @@ html, body {
   margin-bottom: 10%;
 }
 
-.main-content .users-container #users li {
-  margin-bottom: 2%;
-}
-
-.main-content .users-container #users li span {
-  font-weight: bold;
-}
-
-.main-content .users-container #users .last-li {
+.main-content .users-container .user-ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-bottom: 8%;
 }
 
+.main-content .users-container .user-ul li {
+  margin-bottom: 2%;
+}
+
+.main-content .users-container .user-ul li span {
+  font-weight: bold;
+}
+
 .main-content .tasks-container {
-  width: 40%;
+  width: 80%;
   text-align: left;
   padding: 20px;
   border: 2px solid lightblue;
@@ -162,15 +245,492 @@ html, body {
   margin-bottom: 10%;
 }
 
-.main-content .tasks-container #tasks li {
+.main-content .tasks-container .task-ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 8%;
+}
+
+.main-content .tasks-container .task-ul li {
   margin-bottom: 2%;
 }
 
-.main-content .tasks-container #tasks li span {
+.main-content .tasks-container .task-ul li span {
   font-weight: bold;
 }
 
-.main-content .tasks-container #tasks .last-li {
-  margin-bottom: 8%;
+.main-content .tasks-container .task-ul .edit-btn {
+  padding: 10px;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  width: 30%;
+  background-color: #5fd7ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  outline: none;
+  border: 2px solid #5fd7ff;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.main-content .tasks-container .task-ul .edit-btn:hover {
+  background-color: white;
+  color: #5fd7ff;
+  border: 2px solid #5fd7ff;
+}
+
+.main-content .tasks-container .task-ul .remove-btn {
+  padding: 10px;
+  width: 30%;
+  background-color: #ff5555;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  outline: none;
+  border: 2px solid #ff5555;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.main-content .tasks-container .task-ul .remove-btn:hover {
+  background-color: white;
+  color: #ff5555;
+  border: 2px solid #ff5555;
+}
+
+@media screen and (max-width: 790px) {
+  .top-section .buttons-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .top-section .buttons-container .newUser-btn, .top-section .buttons-container .newTask-btn {
+    width: 80%;
+    margin: 3% auto;
+  }
+  .filters-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 5%;
+    width: 100%;
+  }
+  .filters-container .filter {
+    width: 80%;
+    margin-bottom: 3%;
+  }
+  .main-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .main-content .users-container {
+    width: 80%;
+    margin-bottom: 10%;
+  }
+  .main-content .tasks-container {
+    width: 80%;
+  }
+  .main-content .tasks-container .task-ul .edit-btn, .main-content .tasks-container .task-ul .remove-btn {
+    width: 100%;
+  }
+}
+
+.addTask-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.addTask-container a {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 2%;
+}
+
+.addTask-container a button {
+  width: 10rem;
+  padding: 10px;
+  background-color: #65d3ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 2px solid lightblue;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.addTask-container a button:hover {
+  background-color: white;
+  color: black;
+}
+
+.addTask-container h1 {
+  font-weight: bold;
+  margin: 3% auto;
+  padding-bottom: 10px;
+  border-bottom: 2px solid lightblue;
+}
+
+.addTask-container .form-container {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.addTask-container .form-container form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.addTask-container .form-container form input, .addTask-container .form-container form select {
+  width: 20%;
+  padding: 10px;
+  outline: none;
+  border: 2px solid lightblue;
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+}
+
+.addTask-container .form-container form input:first-child, .addTask-container .form-container form select:first-child {
+  width: 40%;
+}
+
+.addTask-container .form-container form input:hover, .addTask-container .form-container form input:focus, .addTask-container .form-container form select:hover, .addTask-container .form-container form select:focus {
+  background-color: #f0fbff;
+}
+
+.addTask-container .form-container form .add-task {
+  width: 10%;
+  padding: 10px;
+  background-color: #65d3ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 2px solid lightblue;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.addTask-container .form-container form .add-task:hover {
+  background-color: white;
+  color: black;
+}
+
+@media screen and (max-width: 790px) {
+  .addTask-container a {
+    width: 80%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .addTask-container a button {
+    width: 100%;
+  }
+  .addTask-container .form-container form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .addTask-container .form-container form input, .addTask-container .form-container form select {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+  .addTask-container .form-container form input:first-child, .addTask-container .form-container form select:first-child {
+    width: 100%;
+  }
+  .addTask-container .form-container form .add-task {
+    width: 100%;
+  }
+}
+
+.addUser-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.addUser-container a {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 2%;
+}
+
+.addUser-container a button {
+  width: 10rem;
+  padding: 10px;
+  background-color: #65d3ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 2px solid lightblue;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.addUser-container a button:hover {
+  background-color: white;
+  color: black;
+}
+
+.addUser-container h1 {
+  font-weight: bold;
+  margin: 3% auto;
+  padding-bottom: 10px;
+  border-bottom: 2px solid lightblue;
+}
+
+.addUser-container .form-container {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.addUser-container .form-container form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.addUser-container .form-container form input {
+  padding: 10px;
+  outline: none;
+  border: 2px solid lightblue;
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+}
+
+.addUser-container .form-container form input:hover, .addUser-container .form-container form input:focus {
+  background-color: #f0fbff;
+}
+
+.addUser-container .form-container form div {
+  width: 100%;
+  margin-bottom: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.addUser-container .form-container form .form-row1 #name {
+  width: 50%;
+}
+
+.addUser-container .form-container form .form-row1 #cpf, .addUser-container .form-container form .form-row1 #birthdate {
+  width: 20%;
+}
+
+.addUser-container .form-container form .form-row2 #email {
+  width: 60%;
+}
+
+.addUser-container .form-container form .form-row2 #password {
+  width: 35%;
+}
+
+.addUser-container .form-container form .form-row3 #address {
+  width: 60%;
+}
+
+.addUser-container .form-container form .form-row3 #number, .addUser-container .form-container form .form-row3 #complement {
+  width: 15%;
+}
+
+.addUser-container .form-container form .form-row4 input {
+  width: 22%;
+}
+
+.addUser-container .form-container form .add-user {
+  width: 100%;
+  padding: 10px;
+  background-color: #65d3ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  border: 2px solid lightblue;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.addUser-container .form-container form .add-user:hover {
+  background-color: white;
+  color: black;
+}
+
+@media screen and (max-width: 790px) {
+  .addUser-container a {
+    width: 80%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .addUser-container a button {
+    width: 100%;
+  }
+  .addUser-container .form-container form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .addUser-container .form-container form div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .addUser-container .form-container form div input {
+    margin-bottom: 5%;
+  }
+  .addUser-container .form-container form .form-row1 #name, .addUser-container .form-container form .form-row1 #cpf, .addUser-container .form-container form .form-row1 #birthdate {
+    width: 100%;
+  }
+  .addUser-container .form-container form .form-row2 #email, .addUser-container .form-container form .form-row2 #password {
+    width: 100%;
+  }
+  .addUser-container .form-container form .form-row3 #address, .addUser-container .form-container form .form-row3 #number, .addUser-container .form-container form .form-row3 #complement {
+    width: 100%;
+  }
+  .addUser-container .form-container form .form-row4 input {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

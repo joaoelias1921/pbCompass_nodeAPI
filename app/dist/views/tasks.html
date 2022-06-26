@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>API REST</title>
+</head>
+<body onload="fetchTasks()">
+    <header>
+        <section class="top-section">
+            <div class="title-container">
+                <h1>Node API</h1>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="addTask-container">
+            <a href="../index.html">
+                <button>Go back</button>
+            </a>
+            <h1>Add a new task here!</h1>
+            <div class="form-container">
+                <form>
+                    <input type="text" name="description" placeholder="Description" id="description">
+                    <input type="datetime-local" name="time" id="time">
+                    <select name="user" id="user">
+                        <option value="">Select user</option>
+                        <option value="62b5f91ba570e2b537c088d6">Joao</option>
+                    </select>
+                    <button class="add-task" onclick="addTask()">Add Task</button>
+                </form>
+            </div>
+        </section>
+        <section class="filters-container">
+            <div class="filter">
+                <input id="task-search" type="text" placeholder="Search a task here">
+            </div>
+        </section>
+        <section class="main-content">
+            <div class="tasks-container">
+                <h1>Tasks</h1>
+            </div>
+        </section>
+    </main>
+    <script src="../js/functions/tasks.js"></script>
+</body>
+</html>
