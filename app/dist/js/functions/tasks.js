@@ -102,6 +102,7 @@ function removeTask(p) {
         .then(res => {
         if (res.ok) {
             console.log("HTTP request successful");
+            window.location.reload();
         }
         else {
             console.log("HTTP request unsuccessful");

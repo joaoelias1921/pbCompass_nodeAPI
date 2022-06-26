@@ -29,26 +29,28 @@
     </div>  
     <div class="modal" id="modal">
         <div class="modalContent">
-            <div>
-                <input type="text" name="description" placeholder="Description" id="descriptionEdit">
-                <input type="datetime-local" name="time" id="timeEdit">
-                <select name="user" id="userEdit">
-                    <option value="">Select user</option>
-                    <option value="62b5f91ba570e2b537c088d6">Joao</option>
-                </select>
-            </div>
-            <div class="modalButtons">
-                <a href="">
-                    <button id="modalCancel">
-                        Cancel
-                    </button>
-                </a>
-                <a onclick="putTaskData(this)" name="editConfirm">
-                    <button id="modalConfirm">
-                        Confirm Edit
-                    </button>
-                </a>
-            </div>
+            <form action="">
+                <div>
+                    <input type="text" name="description" placeholder="Description" id="descriptionEdit">
+                    <input type="datetime-local" name="time" id="timeEdit">
+                    <select name="user" id="userEdit">
+                        <option value="">Select user</option>
+                        <option value="62b5f91ba570e2b537c088d6">Joao</option>
+                    </select>
+                </div>
+                <div class="modalButtons">
+                    <a href="">
+                        <button id="modalCancel">
+                            Cancel
+                        </button>
+                    </a>
+                    <a onclick="putTaskData(this)" name="editConfirm">
+                        <button id="modalConfirm">
+                            Confirm Edit
+                        </button>
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 </body>

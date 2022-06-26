@@ -119,7 +119,10 @@ function removeTask(p: HTMLParamElement) {
         method: "DELETE"
     })
     .then(res => {
-        if (res.ok) { console.log("HTTP request successful") }
+        if (res.ok) { 
+            console.log("HTTP request successful"); 
+            window.location.reload();
+        }
         else { console.log("HTTP request unsuccessful") }
         return res;
     })
