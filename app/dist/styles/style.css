@@ -229,6 +229,50 @@ html, body {
   font-weight: bold;
 }
 
+.main-content .users-container .user-ul .edit-btn {
+  padding: 10px;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  width: 30%;
+  background-color: #5fd7ff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  outline: none;
+  border: 2px solid #5fd7ff;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.main-content .users-container .user-ul .edit-btn:hover {
+  background-color: white;
+  color: #5fd7ff;
+  border: 2px solid #5fd7ff;
+}
+
+.main-content .users-container .user-ul .remove-btn {
+  padding: 10px;
+  width: 30%;
+  background-color: #ff5555;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: white;
+  outline: none;
+  border: 2px solid #ff5555;
+  border-radius: 10px;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.main-content .users-container .user-ul .remove-btn:hover {
+  background-color: white;
+  color: #ff5555;
+  border: 2px solid #ff5555;
+}
+
 .main-content .tasks-container {
   width: 80%;
   text-align: left;

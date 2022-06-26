@@ -73,7 +73,7 @@ function listUsers(users){
 function addUser() {
     const name = document.getElementById('name')! as HTMLInputElement;
     const cpf = document.getElementById('cpf')! as HTMLInputElement;
-    const birthDate = document.getElementById('birthDate')! as HTMLInputElement;
+    const birthDate = document.getElementById('birthdate')! as HTMLInputElement;
     const email = document.getElementById('email')! as HTMLInputElement;
     const password = document.getElementById('password')! as HTMLInputElement;
     const address = document.getElementById('address')! as HTMLInputElement;
