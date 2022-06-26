@@ -105,7 +105,7 @@ userSearch.addEventListener("input", function(){
 
     if (userSearch.value.length > 0){
         for (var i = 0; i < userCards.length; i++){
-            var userCard = userCards[i];
+            var userCard = userCards[i] as HTMLElement;
             var allLi = userCard.querySelectorAll("li")!;
             var searchString = "";
             let regex = new RegExp(this.value, "i");
@@ -115,13 +115,13 @@ userSearch.addEventListener("input", function(){
             }
 
             !regex.test(searchString) ? 
-                userCard.classList.add("invisible") : 
-                    userCard.classList.remove("invisible");
+                userCard.style.display = "none" : 
+                    userCard.style.display = "flex";
         }
     }else{
         for (var i = 0; i < userCards.length; i++) {
-            var userCard = userCards[i];
-            userCard.classList.remove("invisible");
+            var userCard = userCards[i] as HTMLElement;
+            userCard.style.display = "flex";
         }
     }
 });

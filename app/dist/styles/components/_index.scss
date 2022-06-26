@@ -16,32 +16,34 @@
             padding-bottom: 1%;
         }
     }
-    .buttons-container {
-        width: 100%;
-        margin-bottom: 3%;
+}
+
+.buttons-container {
+    width: 100%;
+    margin-top: 3%;
+    @include centered();
+    justify-content: space-evenly;
+    .newUser-btn, .newTask-btn {
+        width: 60%;
         @include centered();
-        justify-content: space-evenly;
+        margin-top: 5%;
         flex-direction: row;
-        .newUser-btn, .newTask-btn {
-            width: 40%;
-            @include centered();
-            flex-direction: row;
-            button {
-                padding: 20px;
-                width: 100%;
+        button {
+            padding: 20px;
+            width: 100%;
+            background-color: rgb(86, 213, 255);
+            font-family: $font;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            outline: none;
+            border: 2px solid lightblue;
+            border-radius: 15px;
+            transition: 240ms ease-in-out;
+            cursor: pointer;
+            &:hover {
                 background-color: white;
-                font-family: $font;
-                font-weight: bold;
-                font-size: 1rem;
-                outline: none;
-                border: 2px solid lightblue;
-                border-radius: 15px;
-                transition: 240ms ease-in-out;
-                cursor: pointer;
-                &:hover {
-                    background-color: lightblue;
-                    color: white;
-                }
+                color: black;
             }
         }
     }
@@ -54,7 +56,7 @@
     justify-content: space-evenly;
     margin: 2% auto;
     .filter {
-        width: 40%;
+        width: 80%;
         input {
             width: 100%;
             padding: 15px;
@@ -78,7 +80,7 @@
     align-items: flex-start;
     flex-direction: row;
     .users-container {
-        width: 40%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         text-align: left;
@@ -93,6 +95,9 @@
             margin-bottom: 10%;
         }
         .user-ul {
+            width: 100%;
+            @include centered();
+            align-items: flex-start;
             margin-bottom: 8%;
             li {
                 margin-bottom: 2%;
@@ -103,7 +108,7 @@
         }
     }
     .tasks-container {
-        width: 40%;
+        width: 80%;
         text-align: left;
         padding: 20px;
         border: 2px solid lightblue;
@@ -166,10 +171,6 @@
             }
         }
     }
-}
-
-.invisible {
-    display: none;
 }
 
 @media screen and (max-width: 790px) {

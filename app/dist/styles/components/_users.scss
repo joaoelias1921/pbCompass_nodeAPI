@@ -1,0 +1,148 @@
+@import '../abstract/variables';
+
+.addUser-container {
+    width: 100%;
+    @include centered();
+    a {
+        align-self: flex-start;
+        margin: 2%;
+        button {
+            width: 10rem;
+            padding: 10px;
+            background-color: #65d3ff;
+            font-family: $font;
+            font-weight: bold;
+            color: white;
+            border: 2px solid lightblue;
+            outline: none;
+            border-radius: 10px;
+            transition: 240ms ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+    h1 {
+        font-weight: bold;
+        margin: 3% auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid lightblue;
+    }
+    .form-container {
+        width: 80%;
+        @include centered();
+        form {
+            width: 100%;
+            @include centered();
+            input {
+                padding: 10px;
+                outline: none;
+                border: 2px solid lightblue;
+                font-family: $font;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                &:hover, &:focus {
+                    background-color: #f0fbff;
+                }
+            }
+            div {
+                width: 100%;
+                margin-bottom: 1%;
+                @include centered();
+                justify-content: space-between;
+                flex-direction: row;
+            }
+            .form-row1 {
+                #name {
+                    width: 50%;
+                }
+                #cpf, #birthdate {
+                    width: 20%;
+                }
+            }
+            .form-row2 {
+                #email {
+                    width: 60%;
+                }
+                #password {
+                    width: 35%;
+                }
+            }
+            .form-row3 {
+                #address {
+                    width: 60%;
+                }
+                #number, #complement {
+                    width: 15%;
+                }
+            }
+            .form-row4 {
+                input {
+                    width: 22%;
+                }
+            }
+            .add-user {
+                width: 100%;
+                padding: 10px;
+                background-color: #65d3ff;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                border: 2px solid lightblue;
+                outline: none;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .addUser-container {
+        a{
+            width: 80%;
+            align-self: center;
+            button {
+                width: 100%;
+            }
+        }
+        .form-container {
+            form {
+                flex-direction: column;
+                div {
+                    flex-direction: column;
+                    input {
+                        margin-bottom: 5%;
+                    }
+                }
+                .form-row1 {
+                    #name, #cpf, #birthdate {
+                        width: 100%;
+                    }
+                }
+                .form-row2 {
+                    #email, #password {
+                        width: 100%;
+                    }
+                }
+                .form-row3 {
+                    #address, #number, #complement {
+                        width: 100%;
+                    }
+                }
+                .form-row4 {
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

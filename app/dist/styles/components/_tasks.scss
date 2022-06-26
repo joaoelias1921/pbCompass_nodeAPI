@@ -1,0 +1,102 @@
+@import "../abstract/variables";
+
+.addTask-container {
+    width: 100%;
+    @include centered();
+    a {
+        align-self: flex-start;
+        margin: 2%;
+        button {
+            width: 10rem;
+            padding: 10px;
+            background-color: #65d3ff;
+            font-family: $font;
+            font-weight: bold;
+            color: white;
+            border: 2px solid lightblue;
+            outline: none;
+            border-radius: 10px;
+            transition: 240ms ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+    h1 {
+        font-weight: bold;
+        margin: 3% auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid lightblue;
+    }
+    .form-container {
+        width: 80%;
+        @include centered();
+        form {
+            width: 100%;
+            @include centered();
+            justify-content: space-between;
+            flex-direction: row;
+            input, select {
+                width: 20%;
+                padding: 10px;
+                outline: none;
+                border: 2px solid lightblue;
+                font-family: $font;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                &:first-child {
+                    width: 40%;
+                }
+                &:hover, &:focus {
+                    background-color: #f0fbff;
+                }
+            }
+            .add-task {
+                width: 10%;
+                padding: 10px;
+                background-color: #65d3ff;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                border: 2px solid lightblue;
+                outline: none;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .addTask-container {
+        a{
+            width: 80%;
+            align-self: center;
+            button {
+                width: 100%;
+            }
+        }
+        .form-container {
+            form {
+                flex-direction: column;
+                input, select {
+                    width: 100%;
+                    margin-bottom: 5%;
+                    &:first-child {
+                        width: 100%;
+                    }
+                }
+                .add-task {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

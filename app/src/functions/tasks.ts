@@ -80,16 +80,13 @@ taskSearch.addEventListener("input", function(){
             var userLi = taskCard.querySelector("#user")!;
             let regex = new RegExp(this.value, "i");
 
-            var searchString = descLi.textContent?.split(" ")[1] as string;
+            var searchString = descLi.textContent?.split(": ")[1] as string;
             searchString += dateLi.textContent?.split("date: ")[1];
-            searchString += userLi.textContent?.split(" ")[1];
+            searchString += userLi.textContent?.split(": ")[1];
 
-            if (!regex.test(searchString)) { 
-                taskCard.style.display = "none";
-            } else {
-                console.log(searchString);
-                taskCard.style.display = "flex";
-            }
+            !regex.test(searchString) ? 
+                taskCard.style.display = "none" :
+                    taskCard.style.display = "flex";
         }
     }else{
         for (var i = 0; i < taskCards.length; i++) {

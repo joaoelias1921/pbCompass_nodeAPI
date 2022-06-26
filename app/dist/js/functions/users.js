@@ -105,14 +105,14 @@ userSearch.addEventListener("input", function () {
                 searchString += (_a = allLi[i].textContent) === null || _a === void 0 ? void 0 : _a.split(": ")[1];
             }
             !regex.test(searchString) ?
-                userCard.classList.add("invisible") :
-                userCard.classList.remove("invisible");
+                userCard.style.display = "none" :
+                userCard.style.display = "flex";
         }
     }
     else {
         for (var i = 0; i < userCards.length; i++) {
             var userCard = userCards[i];
-            userCard.classList.remove("invisible");
+            userCard.style.display = "flex";
         }
     }
 });

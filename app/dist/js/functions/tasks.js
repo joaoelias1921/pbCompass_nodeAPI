@@ -72,16 +72,12 @@ taskSearch.addEventListener("input", function () {
             var dateLi = taskCard.querySelector("#date");
             var userLi = taskCard.querySelector("#user");
             let regex = new RegExp(this.value, "i");
-            var searchString = (_a = descLi.textContent) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
+            var searchString = (_a = descLi.textContent) === null || _a === void 0 ? void 0 : _a.split(": ")[1];
             searchString += (_b = dateLi.textContent) === null || _b === void 0 ? void 0 : _b.split("date: ")[1];
-            searchString += (_c = userLi.textContent) === null || _c === void 0 ? void 0 : _c.split(" ")[1];
-            if (!regex.test(searchString)) {
-                taskCard.style.display = "none";
-            }
-            else {
-                console.log(searchString);
+            searchString += (_c = userLi.textContent) === null || _c === void 0 ? void 0 : _c.split(": ")[1];
+            !regex.test(searchString) ?
+                taskCard.style.display = "none" :
                 taskCard.style.display = "flex";
-            }
         }
     }
     else {
