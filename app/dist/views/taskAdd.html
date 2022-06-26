@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/functions/tasks.js"></script>
+    <title>API REST</title>
+</head>
+<body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser();">
+    <div id="content">
+        <h1>Tasks</h1>
+        <div class="form">
+            <form action="">
+                <input type="text" name="description" placeholder="Description" id="description">
+                <input type="datetime-local" name="time" id="time">
+                <select name="user" id="user">
+                    <option value="">Select user</option>
+                </select>
+                <button id="add" onclick="addTask()">Add Task</button>
+            </form>
+        </div>
+        <div class="list">
+            <ul id="tasks">
+                
+            </ul>
+        </div>
+    </div>  
+    <div class="modal" id="modal">
+        <div class="modalContent">
+            <form action="">
+                <div>
+                    <input type="text" name="description" placeholder="Description" id="descriptionEdit">
+                    <input type="datetime-local" name="time" id="timeEdit">
+                    <select name="user" id="userEdit">
+                        <option value="">Select user</option>
+                    </select>
+                </div>
+                <div class="modalButtons">
+                    <a href="">
+                        <button id="modalCancel">
+                            Cancel
+                        </button>
+                    </a>
+                    <a onclick="putTaskData(this)" name="editConfirm">
+                        <button id="modalConfirm">
+                            Confirm Edit
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

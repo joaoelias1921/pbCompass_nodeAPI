@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/functions/users.js"></script>
+    <title>API REST</title>
+</head>
+<body onload="fetchUsers()">
+    <div id="content">
+        <h1>Users</h1>
+        <div class="form">
+            <form action="">
+                <div>
+                    <input type="text" name="name" placeholder="Name" id="name">
+                    <input type="text" name="cpf" placeholder="CPF" id="cpf">
+                </div>
+                <div>
+                    <input type="date" name="birthDate" id="birthDate">
+                    <input type="email" name="email" placeholder="Email" id="email">
+                    <input type="text" name="password" placeholder="Password" id="password">
+                </div>
+                <div>
+                    <input type="text" name="address" placeholder="address" id="address">
+                    <input type="text" name="number" placeholder="number" id="number">
+                    <input type="text" name="complement" placeholder="Complement" id="complement">
+                </div>
+                <div>
+                    <input type="text" name="city" placeholder="City" id="city">
+                    <input type="text" name="state" placeholder="State" id="state">
+                    <input type="text" name="country" placeholder="Country" id="country">
+                </div>
+                <div>
+                    <input type="text" name="zipCode" placeholder="zipCode" id="zipCode">
+                </div>
+                
+                <button id="add" onclick="addUser()">Add Task</button>
+            </form>
+        </div>
+        <div class="list">
+            <ul id="users">
+                
+            </ul>
+        </div>
+    </div>  
+    <div class="modal" id="modal">
+        <div class="modalContent">
+            <form action="">
+                <div>
+                    <input type="text" name="name" placeholder="Name" id="nameEdit">
+                    <input type="text" name="cpf" placeholder="CPF" id="cpfEdit">
+                </div>
+                <div>
+                    <input type="date" name="birthDate" id="birthDateEdit">
+                    <input type="email" name="email" placeholder="Email" id="emailEdit">
+                    <input type="text" name="password" placeholder="Password" id="passwordEdit">
+                </div>
+                <div>
+                    <input type="text" name="address" placeholder="address" id="addressEdit">
+                    <input type="text" name="number" placeholder="number" id="numberEdit">
+                    <input type="text" name="complement" placeholder="Complement" id="complementEdit">
+                </div>
+                <div>
+                    <input type="text" name="city" placeholder="City" id="cityEdit">
+                    <input type="text" name="state" placeholder="State" id="stateEdit">
+                    <input type="text" name="country" placeholder="Country" id="countryEdit">
+                </div>
+                <div>
+                    <input type="text" name="zipCode" placeholder="zipCode" id="zipCodeEdit">
+                </div>
+                <div class="modalButtons">
+                    <a href="">
+                        <button id="modalCancel">
+                            Cancel
+                        </button>
+                    </a>
+                    <a onclick="putUserData(this)" name="editUserConfirm">
+                        <button id="modalConfirm">
+                            Confirm Edit
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
