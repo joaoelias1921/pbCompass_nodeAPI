@@ -111,12 +111,18 @@ function editUser(p) {
     })
         .then(function (data) {
         populateInputUser(data);
+        var modal = document.getElementById("modal");
+        var cancel = document.getElementById("modalCancel");
+        modal.style.display = "block";
+        cancel.onclick = function () {
+            modal.style.display = "none";
+        };
     });
 }
 function putUserData(p) {
     const name = document.getElementById('nameEdit');
     const cpf = document.getElementById('cpfEdit');
-    const birthDate = document.getElementById('birthDateEdit');
+    const birthdate = document.getElementById('birthdateEdit');
     const email = document.getElementById('emailEdit');
     const password = document.getElementById('passwordEdit');
     const address = document.getElementById('addressEdit');
@@ -129,7 +135,7 @@ function putUserData(p) {
     let dataEdit = {
         name: `${name.value}`,
         cpf: `${cpf.value}`,
-        birthDate: `${birthDate.value}`,
+        birthDate: `${birthdate.value}`,
         email: `${email.value}`,
         password: `${password.value}`,
         address: `${address.value}`,
@@ -155,7 +161,7 @@ function putUserData(p) {
 function populateInputUser(data) {
     const name = document.getElementById('nameEdit');
     const cpf = document.getElementById('cpfEdit');
-    const birthDate = document.getElementById('birthDateEdit');
+    const birthDate = document.getElementById('birthdateEdit');
     const email = document.getElementById('emailEdit');
     const password = document.getElementById('passwordEdit');
     const address = document.getElementById('addressEdit');
@@ -165,7 +171,7 @@ function populateInputUser(data) {
     const state = document.getElementById('stateEdit');
     const country = document.getElementById('countryEdit');
     const zipCode = document.getElementById('zipCodeEdit');
-    const confirm = document.querySelector('[name="editUserConfirm"]');
+    const confirm = document.querySelector('[name="editConfirm"]');
     confirm.setAttribute('id', data._id);
     name.value = data.name;
     cpf.value = data.cpf;

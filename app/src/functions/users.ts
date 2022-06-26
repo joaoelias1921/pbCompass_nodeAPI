@@ -120,14 +120,21 @@ function editUser(p: HTMLParamElement) {
         return response.json();
     })
     .then(function(data) {
-        populateInputUser(data);   
+        populateInputUser(data); 
+        var modal = document.getElementById("modal")!;
+        var cancel = document.getElementById("modalCancel")!;
+        modal.style.display = "block";
+
+        cancel.onclick = function() {
+            modal.style.display = "none";
+        }  
     });
 }
 
 function putUserData(p: HTMLParamElement) {
     const name = document.getElementById('nameEdit')! as HTMLInputElement;
     const cpf = document.getElementById('cpfEdit')! as HTMLInputElement;
-    const birthDate = document.getElementById('birthDateEdit')! as HTMLInputElement;
+    const birthdate = document.getElementById('birthdateEdit')! as HTMLInputElement;
     const email = document.getElementById('emailEdit')! as HTMLInputElement;
     const password = document.getElementById('passwordEdit')! as HTMLInputElement;
     const address = document.getElementById('addressEdit')! as HTMLInputElement;
@@ -141,7 +148,7 @@ function putUserData(p: HTMLParamElement) {
     let dataEdit = {
         name: `${name.value}`, 
         cpf: `${cpf.value}`, 
-        birthDate: `${birthDate.value}`,
+        birthDate: `${birthdate.value}`,
         email: `${email.value}`, 
         password: `${password.value}`, 
         address: `${address.value}`,
@@ -169,7 +176,7 @@ function putUserData(p: HTMLParamElement) {
 function populateInputUser(data) {
     const name = document.getElementById('nameEdit')! as HTMLInputElement;
     const cpf = document.getElementById('cpfEdit')! as HTMLInputElement;
-    const birthDate = document.getElementById('birthDateEdit')! as HTMLInputElement;
+    const birthDate = document.getElementById('birthdateEdit')! as HTMLInputElement;
     const email = document.getElementById('emailEdit')! as HTMLInputElement;
     const password = document.getElementById('passwordEdit')! as HTMLInputElement;
     const address = document.getElementById('addressEdit')! as HTMLInputElement;
@@ -179,7 +186,7 @@ function populateInputUser(data) {
     const state = document.getElementById('stateEdit')! as HTMLInputElement;
     const country = document.getElementById('countryEdit')! as HTMLInputElement;
     const zipCode = document.getElementById('zipCodeEdit')! as HTMLInputElement;
-    const confirm = document.querySelector('[name="editUserConfirm"]')! as HTMLInputElement;
+    const confirm = document.querySelector('[name="editConfirm"]')! as HTMLInputElement;
     confirm!.setAttribute('id', data._id);
 
     name.value = data.name;

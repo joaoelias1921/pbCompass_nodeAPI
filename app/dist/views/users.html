@@ -63,6 +63,44 @@
             </div>
         </section>
     </main>
+    <div class="modal" id="modal">
+        <div class="modalContent">
+            <form action="">
+                <div class="modalInput">
+                    <div>
+                        <input type="text" name="name" placeholder="Name" id="nameEdit">
+                        <input type="text" name="cpf" placeholder="CPF" id="cpfEdit">
+                    </div>
+                    <div>
+                        <input type="date" name="birthDate" id="birthdateEdit">
+                        <input type="email" name="email" placeholder="Email" id="emailEdit">
+                        <input type="text" name="password" placeholder="Password" id="passwordEdit">
+                    </div>
+                    <div>
+                        <input type="text" name="address" placeholder="address" id="addressEdit">
+                        <input type="text" name="number" placeholder="number" id="numberEdit">
+                        <input type="text" name="complement" placeholder="Complement" id="complementEdit">
+                    </div>
+                    <div>
+                        <input type="text" name="city" placeholder="City" id="cityEdit">
+                        <input type="text" name="state" placeholder="State" id="stateEdit">
+                        <input type="text" name="country" placeholder="Country" id="countryEdit">
+                    </div>
+                    <div>
+                        <input type="text" name="zipCode" placeholder="zipCode" id="zipCodeEdit">
+                    </div>
+                </div>
+                <div class="modalButtons">
+                    <button id="modalCancel" class="remove-btn">
+                        Cancel
+                    </button>
+                    <button id="modalConfirm" class="edit-btn" onclick="putUserData(this)" name="editConfirm" >
+                        Confirm Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="../js/functions/users.js"></script>
 </body>
 </html>
