@@ -71,7 +71,7 @@ function editTask(p: HTMLParamElement) {
         return response.json();
     })
     .then(function(data) {
-        populateInputTask(data);   
+        populateInputTask(data);
     });
 }
 
@@ -133,4 +133,44 @@ function removeTask(p: HTMLParamElement) {
     .catch(error => console.log(error))
 
     //window.location.reload();
+}
+
+function populateSelectUser() {
+    const select = document.querySelector('#user')!;
+    
+    fetch('http://localhost:3000/users')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data) {
+        let option;
+
+        for(let i=0; i < data.length; i++) {
+            option = document.createElement('option');
+            option.text = data[i].name;
+            option.value = data[i]._id;
+            select.appendChild(option);
+        }
+    });
+
+}
+
+function populateSelectEditUser() {
+    const select = document.querySelector('#userEdit')!;
+    
+    fetch('http://localhost:3000/users')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data) {
+        let option;
+
+        for(let i=0; i < data.length; i++) {
+            option = document.createElement('option');
+            option.text = data[i].name;
+            option.value = data[i]._id;
+            select.appendChild(option);
+        }
+    });
+
 }

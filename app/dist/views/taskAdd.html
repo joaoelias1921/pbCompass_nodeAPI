@@ -7,7 +7,7 @@
     <script src="../js/functions/tasks.js"></script>
     <title>API REST</title>
 </head>
-<body onload="fetchTasks()">
+<body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser();">
     <div id="content">
         <h1>Tasks</h1>
         <div class="form">
@@ -16,7 +16,6 @@
                 <input type="datetime-local" name="time" id="time">
                 <select name="user" id="user">
                     <option value="">Select user</option>
-                    <option value="62b5f91ba570e2b537c088d6">Joao</option>
                 </select>
                 <button id="add" onclick="addTask()">Add Task</button>
             </form>
@@ -35,7 +34,6 @@
                     <input type="datetime-local" name="time" id="timeEdit">
                     <select name="user" id="userEdit">
                         <option value="">Select user</option>
-                        <option value="62b5f91ba570e2b537c088d6">Joao</option>
                     </select>
                 </div>
                 <div class="modalButtons">
