@@ -75,15 +75,40 @@ function editTask(p: HTMLParamElement) {
     });
 }
 
+function putTaskData(p: HTMLParamElement) {
+    const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
+    const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
+    const user = document.getElementById('userEdit')! as HTMLInputElement;
+
+    let dataEdit = {
+        description: `${description.value}`, 
+        date: `${datetime.value}`, 
+        user: `${user.value}`
+    }
+
+    fetch(`http://localhost:3000/tasks/${p.id}`, {
+        method: "PUT",
+        body: JSON.stringify(dataEdit),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(json) {
+        console.log(json);
+    });
+}
+
 function populateInputTask(data) {
-    const description = document.getElementById('description')! as HTMLInputElement;
-    const datetime = document.getElementById('time')! as HTMLInputElement;
-    const user = document.getElementById('user')! as HTMLInputElement;
+    const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
+    const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
+    const user = document.getElementById('userEdit')! as HTMLInputElement;
+    const confirm = document.querySelector('[name="editConfirm"]')! as HTMLInputElement;
+    confirm!.setAttribute('id', data._id);
 
     description.value = data.description;
     datetime.value = data.date;
-    user.value = data.user._id;
-    
+    user.value = data.user._id;  
 }
 
 

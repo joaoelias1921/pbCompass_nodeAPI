@@ -64,10 +64,33 @@ function editTask(p) {
         populateInputTask(data);
     });
 }
+function putTaskData(p) {
+    const description = document.getElementById('descriptionEdit');
+    const datetime = document.getElementById('timeEdit');
+    const user = document.getElementById('userEdit');
+    let dataEdit = {
+        description: `${description.value}`,
+        date: `${datetime.value}`,
+        user: `${user.value}`
+    };
+    fetch(`http://localhost:3000/tasks/${p.id}`, {
+        method: "PUT",
+        body: JSON.stringify(dataEdit),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+        .then(function (response) {
+        return response.json();
+    })
+        .then(function (json) {
+        console.log(json);
+    });
+}
 function populateInputTask(data) {
-    const description = document.getElementById('description');
-    const datetime = document.getElementById('time');
-    const user = document.getElementById('user');
+    const description = document.getElementById('descriptionEdit');
+    const datetime = document.getElementById('timeEdit');
+    const user = document.getElementById('userEdit');
+    const confirm = document.querySelector('[name="editConfirm"]');
+    confirm.setAttribute('id', data._id);
     description.value = data.description;
     datetime.value = data.date;
     user.value = data.user._id;
