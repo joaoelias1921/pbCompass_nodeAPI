@@ -95,6 +95,12 @@ function editTask(p) {
     })
         .then(function (data) {
         populateInputTask(data);
+        var modal = document.getElementById("modal");
+        var cancel = document.getElementById("modalCancel");
+        modal.style.display = "block";
+        cancel.onclick = function () {
+            modal.style.display = "none";
+        };
     });
 }
 function putTaskData(p) {

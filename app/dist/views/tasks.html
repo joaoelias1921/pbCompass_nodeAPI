@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../styles/style.css">
     <title>API REST</title>
 </head>
-<body onload="fetchTasks(); populateSelectUser()">
+<body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser()">
     <header>
         <section class="top-section">
             <div class="title-container">
@@ -47,6 +47,31 @@
             </div>
         </section>
     </main>
+    <div class="modal" id="modal">
+        <div class="modalContent">
+            <form action="">
+                <div class="modalInput">
+                    <div class="modalDescription">
+                        <input type="text" name="description" placeholder="Description" id="descriptionEdit">
+                    </div>
+                    <div class="">
+                        <input type="datetime-local" name="time" id="timeEdit">
+                        <select name="user" id="userEdit">
+                            <option value="">Select user</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modalButtons">
+                    <button id="modalCancel" class="remove-btn">
+                        Cancel
+                    </button>
+                    <button id="modalConfirm" class="edit-btn" onclick="putTaskData(this)" name="editConfirm" >
+                        Confirm Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="../js/functions/tasks.js"></script>
 </body>
 </html>
