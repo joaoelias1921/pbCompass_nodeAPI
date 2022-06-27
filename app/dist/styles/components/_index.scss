@@ -227,69 +227,119 @@
     .modalContent {
         background-color: white;
         border-radius: 8px;
-        margin-top: 20%;
-        margin-left:auto;
+        margin-top: 5%;
+        margin-left: auto;
         margin-right: auto;
         padding: 30px;
-        width: 70%;
-        height: 60%;
-        display: flex;
-        flex-direction: column;
+        width: 80%;
+        @include centered();
+        h1 {
+            font-weight: bold;
+            margin-bottom: 5%;
+            border-bottom: 2px solid lightblue;
+            padding-bottom: 1%;
+        }
         .modalInput {
-            display: flex;
-            flex-direction: column;
-        }
-        input, select {
-            width: 30%;
-            padding: 10px;
-            outline: none;
-            margin-bottom: 20px;
-            border: 2px solid lightblue;
-            font-family: $font;
-            border-radius: 10px;
-            transition: 240ms ease-in-out;
-            &:first-child {
-                width: 40%;
+            width: 90%;
+            @include centered();
+            div {
+                @include centered();
+                width: 100%;
+                justify-content: space-between;
+                flex-direction: row;
             }
-            &:hover, &:focus {
-                background-color: #f0fbff;
+            input, select {
+                width: 30%;
+                padding: 10px;
+                outline: none;
+                margin-bottom: 20px;
+                border: 2px solid lightblue;
+                font-family: $font;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                &:first-child {
+                    width: 40%;
+                }
+                &:hover, &:focus {
+                    background-color: #f0fbff;
+                }
+            }
+            .modal-row1 {
+                #nameEdit {
+                    width: 50%;
+                }
+                #cpfEdit, #birthdateEdit {
+                    width: 20%;
+                }
+                #descriptionEdit {
+                    width: 50%;
+                }
+                #timeEdit, #userEdit {
+                    width: 20%;
+                }
+            }
+            .modal-row2 {
+                #emailEdit {
+                    width: 60%;
+                }
+                #passwordEdit {
+                    width: 35%;
+                }
+            }
+            .modal-row3 {
+                #addressEdit {
+                    width: 60%;
+                }
+                #numberEdit, #complementEdit {
+                    width: 15%;
+                }
+            }
+            .modal-row4 {
+                input {
+                    width: 22%;
+                }
             }
         }
-        .edit-btn {
-            padding: 10px;
-            margin-bottom: 2%;
-            width: 30%;
-            background-color: #5fd7ff;
-            font-family: $font;
-            font-weight: bold;
-            color: white;
-            outline: none;
-            border: 2px solid #5fd7ff;
-            border-radius: 10px;
-            transition: 240ms ease-in-out;
-            cursor: pointer;
-            &:hover {
-                background-color: white;
-                color: #5fd7ff;
+        .modalButtons {
+            width: 100%;
+            @include centered();
+            justify-content: space-between;
+            flex-direction: row;
+            .edit-btn {
+                padding: 10px;
+                width: 30%;
+                background-color: #5fd7ff;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
                 border: 2px solid #5fd7ff;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #5fd7ff;
+                    border: 2px solid #5fd7ff;
+                }
             }
-        }
-        .remove-btn {
-            padding: 10px;
-            width: 30%;
-            background-color: #ff5555;
-            font-family: $font;
-            font-weight: bold;
-            color: white;
-            outline: none;
-            border: 2px solid #ff5555;
-            border-radius: 10px;
-            transition: 240ms ease-in-out;
-            cursor: pointer;
-            &:hover {
-                background-color: white;
-                color: #ff5555;
+            .remove-btn {
+                padding: 10px;
+                width: 30%;
+                background-color: #ff5555;
+                font-family: $font;
+                font-weight: bold;
+                color: white;
+                outline: none;
                 border: 2px solid #ff5555;
+                border-radius: 10px;
+                transition: 240ms ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: white;
+                    color: #ff5555;
+                    border: 2px solid #ff5555;
+                }
             }
         }
     }
