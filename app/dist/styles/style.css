@@ -381,12 +381,11 @@ html, body {
 .modal .modalContent {
   background-color: white;
   border-radius: 8px;
-  margin-top: 20%;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
-  width: 70%;
-  height: 60%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -394,9 +393,24 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.modal .modalContent h1 {
+  font-weight: bold;
+  margin-bottom: 5%;
+  border-bottom: 2px solid lightblue;
+  padding-bottom: 1%;
 }
 
 .modal .modalContent .modalInput {
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,9 +418,39 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
 }
 
-.modal .modalContent input, .modal .modalContent select {
+.modal .modalContent .modalInput div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.modal .modalContent .modalInput input, .modal .modalContent .modalInput select {
   width: 30%;
   padding: 10px;
   outline: none;
@@ -418,17 +462,75 @@ html, body {
   transition: 240ms ease-in-out;
 }
 
-.modal .modalContent input:first-child, .modal .modalContent select:first-child {
+.modal .modalContent .modalInput input:first-child, .modal .modalContent .modalInput select:first-child {
   width: 40%;
 }
 
-.modal .modalContent input:hover, .modal .modalContent input:focus, .modal .modalContent select:hover, .modal .modalContent select:focus {
+.modal .modalContent .modalInput input:hover, .modal .modalContent .modalInput input:focus, .modal .modalContent .modalInput select:hover, .modal .modalContent .modalInput select:focus {
   background-color: #f0fbff;
 }
 
-.modal .modalContent .edit-btn {
+.modal .modalContent .modalInput .modal-row1 #nameEdit {
+  width: 50%;
+}
+
+.modal .modalContent .modalInput .modal-row1 #cpfEdit, .modal .modalContent .modalInput .modal-row1 #birthdateEdit {
+  width: 20%;
+}
+
+.modal .modalContent .modalInput .modal-row1 #descriptionEdit {
+  width: 50%;
+}
+
+.modal .modalContent .modalInput .modal-row1 #timeEdit, .modal .modalContent .modalInput .modal-row1 #userEdit {
+  width: 20%;
+}
+
+.modal .modalContent .modalInput .modal-row2 #emailEdit {
+  width: 60%;
+}
+
+.modal .modalContent .modalInput .modal-row2 #passwordEdit {
+  width: 35%;
+}
+
+.modal .modalContent .modalInput .modal-row3 #addressEdit {
+  width: 60%;
+}
+
+.modal .modalContent .modalInput .modal-row3 #numberEdit, .modal .modalContent .modalInput .modal-row3 #complementEdit {
+  width: 15%;
+}
+
+.modal .modalContent .modalInput .modal-row4 input {
+  width: 22%;
+}
+
+.modal .modalContent .modalButtons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+
+.modal .modalContent .modalButtons .edit-btn {
   padding: 10px;
-  margin-bottom: 2%;
   width: 30%;
   background-color: #5fd7ff;
   font-family: "Poppins", sans-serif;
@@ -442,13 +544,13 @@ html, body {
   cursor: pointer;
 }
 
-.modal .modalContent .edit-btn:hover {
+.modal .modalContent .modalButtons .edit-btn:hover {
   background-color: white;
   color: #5fd7ff;
   border: 2px solid #5fd7ff;
 }
 
-.modal .modalContent .remove-btn {
+.modal .modalContent .modalButtons .remove-btn {
   padding: 10px;
   width: 30%;
   background-color: #ff5555;
@@ -463,7 +565,7 @@ html, body {
   cursor: pointer;
 }
 
-.modal .modalContent .remove-btn:hover {
+.modal .modalContent .modalButtons .remove-btn:hover {
   background-color: white;
   color: #ff5555;
   border: 2px solid #ff5555;

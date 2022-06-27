@@ -31,7 +31,7 @@ function listTasks(tasks) {
         remove.setAttribute('id', task._id);
         description.innerHTML = `<span>Description: </span>${task.description}`;
         date.innerHTML = `<span>Task date: </span>${task.date}`;
-        user.innerHTML = `<span>User: </span>${task.user.name}`;
+        user.innerHTML = `<span>User: </span>${task.user}`;
         ul.appendChild(description);
         ul.appendChild(date);
         ul.appendChild(user);
