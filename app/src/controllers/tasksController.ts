@@ -16,7 +16,7 @@ class TaskController {
             .populate('user')
             .exec((err, tasks) => {
                 if(err) {
-                    res.status(404).send({message: `${err.message} - Task not found!`});
+                    res.status(404).send({message: `${err.message} - (404) Task not found!`});
                 } else {
                     res.status(200).send(tasks);
                 }
@@ -28,7 +28,7 @@ class TaskController {
 
         task.save((err: Error) => {
             if(err) {
-                res.status(404).send({message: `${err.message} - Something went wrong, the Task has not been added!`});
+                res.status(404).send({message: `${err.message} - (404) Something went wrong, the Task has not been added!`});
             } else {
                 res.status(201).send(task.toJSON());
             }
@@ -40,9 +40,9 @@ class TaskController {
 
         tasks.findByIdAndUpdate(id, {$set: req.body}, (err: Error) => {
             if(!err) {
-                res.status(200).send({message: "Task updated successfully!"});
+                res.status(200).send({message: "(200) Task updated successfully!"});
             } else {
-                res.status(404).send({message: err.message});
+                res.status(404).send({message: `${err.message} - (404) Task not found!`});
             }
         });
     }
@@ -52,9 +52,9 @@ class TaskController {
 
         tasks.findByIdAndDelete(id, (err: Error) => {
             if(!err) {
-                res.status(204).send({message: "Task deleted sucessfully!"});
+                res.status(204).send({message: "(204) Task deleted sucessfully!"});
             } else {
-                res.status(404).send({message: err.message});
+                res.status(404).send({message: `${err.message} - (404) Task not found!`});
             }
         });
     }

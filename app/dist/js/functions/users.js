@@ -1,6 +1,6 @@
 "use strict";
 function fetchUsers() {
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/api/v1/users')
         .then(function (response) {
         return response.json();
     })
@@ -16,7 +16,6 @@ function listUsers(users) {
         let cpf = document.createElement('li');
         let birthDate = document.createElement('li');
         let email = document.createElement('li');
-        let password = document.createElement('li');
         let address = document.createElement('li');
         let number = document.createElement('li');
         let complement = document.createElement('li');
@@ -39,7 +38,6 @@ function listUsers(users) {
         cpf.innerHTML = `<span>CPF: </span>${user.cpf}`;
         birthDate.innerHTML = `<span>Birthdate: </span>${user.birthDate}`;
         email.innerHTML = `<span>Email: </span>${user.email}`;
-        password.innerHTML = `<span>Password: </span>${user.password}`;
         address.innerHTML = `<span>Address: </span>${user.address}`;
         number.innerHTML = `<span>Number: </span>${user.number}`;
         complement.innerHTML = `<span>Complement: </span>${user.complement}`;
@@ -51,7 +49,6 @@ function listUsers(users) {
         ul.appendChild(cpf);
         ul.appendChild(birthDate);
         ul.appendChild(email);
-        ul.appendChild(password);
         ul.appendChild(address);
         ul.appendChild(number);
         ul.appendChild(complement);
@@ -65,46 +62,53 @@ function listUsers(users) {
     });
 }
 function addUser() {
-    const name = document.getElementById('name');
-    const cpf = document.getElementById('cpf');
-    const birthDate = document.getElementById('birthdate');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const address = document.getElementById('address');
-    const number = document.getElementById('number');
-    const complement = document.getElementById('complement');
-    const city = document.getElementById('city');
-    const state = document.getElementById('state');
-    const country = document.getElementById('country');
-    const zipCode = document.getElementById('zipCode');
-    let data = {
-        name: `${name.value}`,
-        cpf: `${cpf.value}`,
-        birthDate: `${birthDate.value}`,
-        email: `${email.value}`,
-        password: `${password.value}`,
-        address: `${address.value}`,
-        number: `${number.value}`,
-        complement: `${complement.value}`,
-        city: `${city.value}`,
-        state: `${state.value}`,
-        country: `${country.value}`,
-        zipCode: `${zipCode.value}`
-    };
-    fetch('http://localhost:3000/users', {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-        .then(function (response) {
-        return response.json();
-    })
-        .then(function (json) {
-        console.log(json);
-    });
+    event === null || event === void 0 ? void 0 : event.preventDefault();
+    if (!validateForm()) {
+        return;
+    }
+    else {
+        const name = document.getElementById('name');
+        const cpf = document.getElementById('cpf');
+        const birthDate = document.getElementById('birthdate');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const address = document.getElementById('address');
+        const number = document.getElementById('number');
+        const complement = document.getElementById('complement');
+        const city = document.getElementById('city');
+        const state = document.getElementById('state');
+        const country = document.getElementById('country');
+        const zipCode = document.getElementById('zipCode');
+        let data = {
+            name: `${name.value}`,
+            cpf: `${cpf.value}`,
+            birthDate: `${birthDate.value}`,
+            email: `${email.value}`,
+            password: `${password.value}`,
+            address: `${address.value}`,
+            number: `${number.value}`,
+            complement: `${complement.value}`,
+            city: `${city.value}`,
+            state: `${state.value}`,
+            country: `${country.value}`,
+            zipCode: `${zipCode.value}`
+        };
+        fetch('http://localhost:3000/api/v1/users', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+            .then(function (response) {
+            return response.json();
+        })
+            .then(function (json) {
+            console.log(json);
+        });
+        window.location.reload();
+    }
 }
 function editUser(p) {
-    fetch(`http://localhost:3000/users/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/users/${p.id}`, {
         method: "GET"
     }).then(function (response) {
         return response.json();
@@ -120,43 +124,50 @@ function editUser(p) {
     });
 }
 function putUserData(p) {
-    const name = document.getElementById('nameEdit');
-    const cpf = document.getElementById('cpfEdit');
-    const birthdate = document.getElementById('birthdateEdit');
-    const email = document.getElementById('emailEdit');
-    const password = document.getElementById('passwordEdit');
-    const address = document.getElementById('addressEdit');
-    const number = document.getElementById('numberEdit');
-    const complement = document.getElementById('complementEdit');
-    const city = document.getElementById('cityEdit');
-    const state = document.getElementById('stateEdit');
-    const country = document.getElementById('countryEdit');
-    const zipCode = document.getElementById('zipCodeEdit');
-    let dataEdit = {
-        name: `${name.value}`,
-        cpf: `${cpf.value}`,
-        birthDate: `${birthdate.value}`,
-        email: `${email.value}`,
-        password: `${password.value}`,
-        address: `${address.value}`,
-        number: `${number.value}`,
-        complement: `${complement.value}`,
-        city: `${city.value}`,
-        state: `${state.value}`,
-        country: `${country.value}`,
-        zipCode: `${zipCode.value}`
-    };
-    fetch(`http://localhost:3000/users/${p.id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataEdit),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-        .then(function (response) {
-        return response.json();
-    })
-        .then(function (json) {
-        console.log(json);
-    });
+    event === null || event === void 0 ? void 0 : event.preventDefault();
+    if (!validateModalForm()) {
+        return;
+    }
+    else {
+        const name = document.getElementById('nameEdit');
+        const cpf = document.getElementById('cpfEdit');
+        const birthdate = document.getElementById('birthdateEdit');
+        const email = document.getElementById('emailEdit');
+        const password = document.getElementById('passwordEdit');
+        const address = document.getElementById('addressEdit');
+        const number = document.getElementById('numberEdit');
+        const complement = document.getElementById('complementEdit');
+        const city = document.getElementById('cityEdit');
+        const state = document.getElementById('stateEdit');
+        const country = document.getElementById('countryEdit');
+        const zipCode = document.getElementById('zipCodeEdit');
+        let dataEdit = {
+            name: `${name.value}`,
+            cpf: `${cpf.value}`,
+            birthDate: `${birthdate.value}`,
+            email: `${email.value}`,
+            password: `${password.value}`,
+            address: `${address.value}`,
+            number: `${number.value}`,
+            complement: `${complement.value}`,
+            city: `${city.value}`,
+            state: `${state.value}`,
+            country: `${country.value}`,
+            zipCode: `${zipCode.value}`
+        };
+        fetch(`http://localhost:3000/api/v1/users/${p.id}`, {
+            method: "PUT",
+            body: JSON.stringify(dataEdit),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+            .then(function (response) {
+            return response.json();
+        })
+            .then(function (json) {
+            console.log(json);
+        });
+        window.location.reload();
+    }
 }
 function populateInputUser(data) {
     const name = document.getElementById('nameEdit');
@@ -187,7 +198,7 @@ function populateInputUser(data) {
     zipCode.value = data.zipCode;
 }
 function removeUser(p) {
-    fetch(`http://localhost:3000/users/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/users/${p.id}`, {
         method: "DELETE"
     })
         .then(res => {

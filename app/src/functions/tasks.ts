@@ -1,6 +1,6 @@
 
 function fetchTasks() {
-    fetch('http://localhost:3000/tasks')
+    fetch('http://localhost:3000/api/v1/tasks')
     .then(function(response){
         return response.json();
     })
@@ -55,7 +55,7 @@ function addTask() {
         user: `${user.value}`
     }
 
-    fetch('http://localhost:3000/tasks', {
+    fetch('http://localhost:3000/api/v1/tasks', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -97,7 +97,7 @@ taskSearch.addEventListener("input", function(){
 });
 
 function editTask(p: HTMLParamElement) {
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
         method: "GET"
     }).then(function(response){
         return response.json();
@@ -126,7 +126,7 @@ function putTaskData(p: HTMLParamElement) {
         user: `${user.value}`
     }
 
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
         method: "PUT",
         body: JSON.stringify(dataEdit),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -153,7 +153,7 @@ function populateInputTask(data) {
 
 function removeTask(p: HTMLParamElement) {
 
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
         method: "DELETE"
     })
     .then(res => {
@@ -176,7 +176,7 @@ function removeTask(p: HTMLParamElement) {
 function populateSelectUser() {
     const select = document.querySelector('#user')!;
     
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/api/v1/users')
     .then(function(response){
         return response.json();
     })
@@ -196,7 +196,7 @@ function populateSelectUser() {
 function populateSelectEditUser() {
     const select = document.querySelector('#userEdit')!;
     
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/api/v1/users')
     .then(function(response){
         return response.json();
     })

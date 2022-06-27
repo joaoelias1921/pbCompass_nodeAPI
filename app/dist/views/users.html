@@ -28,24 +28,26 @@
             <div class="form-container">
                 <form>
                     <div class="form-row1">
-                        <input type="text" name="name" placeholder="Name" id="name">
-                        <input type="text" name="cpf" placeholder="CPF" id="cpf">
-                        <input type="date" name="birthDate" id="birthdate">
+                        <input type="text" name="name" placeholder="Name" id="name" onfocusout="validateName(this);">
+                        <input type="text" name="cpf" placeholder="CPF" id="cpf" 
+                            onfocusout="validateCPF(this);" data-mask="000.000.000-00" data-mask-selectonfocus="true">
+                        <input type="date" name="birthDate" id="birthdate" onfocusout="validateAge(this);">
                     </div>
                     <div class="form-row2">
-                        <input type="email" name="email" placeholder="Email" id="email">
-                        <input type="text" name="password" placeholder="Password" id="password">
+                        <input type="email" name="email" placeholder="Email" id="email" onfocusout="validateEmail(this);">
+                        <input type="password" name="password" placeholder="Password" id="password" onfocusout="validatePassword(this);">
                     </div>
                     <div class="form-row3">
-                        <input type="text" name="address" placeholder="Address" id="address">
-                        <input type="text" name="number" placeholder="Number" id="number">
-                        <input type="text" name="complement" placeholder="Complement" id="complement">
+                        <input type="text" name="address" placeholder="Address" id="address" onfocusout="validateInput(this)">
+                        <input type="text" name="number" placeholder="Number" id="number" onfocusout="validateInput(this)">
+                        <input type="text" name="complement" placeholder="Complement" id="complement" onfocusout="validateInput(this)">
                     </div>
                     <div class="form-row4">
-                        <input type="text" name="city" placeholder="City" id="city">
-                        <input type="text" name="state" placeholder="State" id="state">
-                        <input type="text" name="country" placeholder="Country" id="country">
-                        <input type="text" name="zipCode" placeholder="Zip Code" id="zipCode">
+                        <input type="text" name="city" placeholder="City" id="city" onfocusout="validateLocations(this)">
+                        <input type="text" name="state" placeholder="State" id="state" onfocusout="validateLocations(this)">
+                        <input type="text" name="country" placeholder="Country" id="country" onfocusout="validateLocations(this)">
+                        <input type="text" name="zipCode" placeholder="Zip Code" id="zipCode" 
+                            onfocusout="validateZipCode(this)" data-mask="00000-000" data-mask-selectonfocus="true">
                     </div>
                     
                     <button class="add-user" onclick="addUser()">Add User</button>
@@ -68,24 +70,26 @@
             <h1>Edit your info here!</h1>
             <form class="modalInput">
                 <div class="modal-row1">
-                    <input type="text" name="name" placeholder="Name" id="nameEdit">
-                    <input type="text" name="cpf" placeholder="CPF" id="cpfEdit">
-                    <input type="date" name="birthDate" id="birthdateEdit">
+                    <input type="text" name="name" placeholder="Name" id="nameEdit" onfocusout="validateName(this);">
+                    <input type="text" name="cpf" placeholder="CPF" id="cpfEdit" 
+                        onfocusout="validateCPF(this);" data-mask="000.000.000-00" data-mask-selectonfocus="true">
+                    <input type="date" name="birthDate" id="birthdateEdit" onfocusout="validateAge(this);">
                 </div>
                 <div class="modal-row2">
-                    <input type="email" name="email" placeholder="Email" id="emailEdit">
-                    <input type="text" name="password" placeholder="Password" id="passwordEdit">
+                    <input type="email" name="email" placeholder="Email" id="emailEdit" onfocusout="validateEmail(this);">
+                    <input type="password" name="password" placeholder="Password" id="passwordEdit" onfocusout="validatePassword(this);">
                 </div>
                 <div class="modal-row3">
-                    <input type="text" name="address" placeholder="address" id="addressEdit">
-                    <input type="text" name="number" placeholder="number" id="numberEdit">
-                    <input type="text" name="complement" placeholder="Complement" id="complementEdit">
+                    <input type="text" name="address" placeholder="address" id="addressEdit" onfocusout="validateInput(this)">
+                    <input type="text" name="number" placeholder="number" id="numberEdit" onfocusout="validateInput(this)">
+                    <input type="text" name="complement" placeholder="Complement" id="complementEdit" onfocusout="validateInput(this)">
                 </div>
                 <div class="modal-row4">
-                    <input type="text" name="city" placeholder="City" id="cityEdit">
-                    <input type="text" name="state" placeholder="State" id="stateEdit">
-                    <input type="text" name="country" placeholder="Country" id="countryEdit">
-                    <input type="text" name="zipCode" placeholder="zipCode" id="zipCodeEdit">
+                    <input type="text" name="city" placeholder="City" id="cityEdit" onfocusout="validateLocations(this)">
+                    <input type="text" name="state" placeholder="State" id="stateEdit" onfocusout="validateLocations(this)">
+                    <input type="text" name="country" placeholder="Country" id="countryEdit" onfocusout="validateLocations(this)">
+                    <input type="text" name="zipCode" placeholder="zipCode" id="zipCodeEdit"
+                        onfocusout="validateZipCode(this)" data-mask="00000-000" data-mask-selectonfocus="true">
                 </div>
                 <div class="modalButtons">
                     <button id="modalCancel" class="remove-btn">
@@ -99,5 +103,8 @@
         </div>
     </div>
     <script src="../js/functions/users.js"></script>
+    <script src="../js/functions/usersFormValidation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="../js/functions/jquery.mask.js"></script>
 </body>
 </html>
