@@ -42,6 +42,60 @@ html, body {
   padding-bottom: 1%;
 }
 
+.paginator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  width: 100%;
+}
+
+.paginator .pagination-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 5%;
+  padding: 10px 15px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #5fd7ff;
+  outline: none;
+  margin-right: 2%;
+  -webkit-transition: 240ms ease-in-out;
+  transition: 240ms ease-in-out;
+  cursor: pointer;
+}
+
+.paginator .pagination-btn:hover {
+  background-color: #5fd7ff;
+  color: white;
+}
+
 .buttons-container {
   width: 100%;
   margin-top: 3%;
@@ -174,6 +228,10 @@ html, body {
           align-items: flex-start;
   -ms-flex-direction: row;
       flex-direction: row;
+}
+
+.main-content .list-none {
+  display: none;
 }
 
 .main-content .users-container {
