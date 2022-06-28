@@ -30,7 +30,7 @@ function listTasks(tasks) {
         remove.setAttribute('onclick', 'removeTask(this)');
         remove.setAttribute('id', task._id);
         description.innerHTML = `<span>Description: </span>${task.description}`;
-        date.innerHTML = `<span>Task date: </span>${task.date}`;
+        date.innerHTML = `<span>Task date: </span>${task.date.split("T")[0]} at ${task.date.split("T")[1]}`;
         user.innerHTML = `<span>User: </span>${task.user.name}`;
         ul.appendChild(description);
         ul.appendChild(date);

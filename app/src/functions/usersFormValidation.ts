@@ -13,7 +13,7 @@ function validateInput(input) {
 //checks the name for invalid characters
 //also sets the first letter of each name to upper case
 function validateName(name) {
-    let regex = /^[ãâáôõóêéíúa-zA-Z ]*$/;
+    let regex = /^[ãâáôõóêéíúaç-zA-Z ]*$/;
     
     if(!regex.test(name.value) || name.value == "") {
         name.value = "";
@@ -90,7 +90,7 @@ function validatePassword(password) {
 }
 
 function validateLocations(input) {
-    let regex = /^[a-zA-Z ]*$/
+    let regex = /^[ãâáôõóêéíúça-zA-Z ]*$/;
 
     if(input.value == "" || !regex.test(input.value)) {
         input.value = "";
