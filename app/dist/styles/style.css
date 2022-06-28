@@ -176,6 +176,10 @@ html, body {
       flex-direction: row;
 }
 
+.main-content .list-none {
+  display: none;
+}
+
 .main-content .users-container {
   width: 80%;
   display: -webkit-box;

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>API REST</title>
 </head>
 <body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser()">
@@ -44,6 +45,11 @@
         <section class="main-content">
             <div class="tasks-container">
                 <h1>Tasks</h1>
+                <ul class="content list-group">
+                </ul>
+                <div class="paginator"></div>
+            </div>
+            <div class="list-none">
             </div>
         </section>
     </main>

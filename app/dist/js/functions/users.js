@@ -58,7 +58,8 @@ function listUsers(users) {
         ul.appendChild(zipCode);
         ul.appendChild(edit);
         ul.appendChild(remove);
-        (_a = document.querySelector(".users-container")) === null || _a === void 0 ? void 0 : _a.appendChild(ul);
+        (_a = document.querySelector(".list-none")) === null || _a === void 0 ? void 0 : _a.appendChild(ul);
+        userPaginate();
     });
 }
 function addUser() {
@@ -242,3 +243,48 @@ userSearch.addEventListener("input", function () {
         }
     }
 });
+function userPaginate() {
+    var cards = document.querySelectorAll(".user-ul");
+    let listArray = Array.from(cards);
+    const numberOfItems = listArray.length;
+    const numberPerPage = 3;
+    const currentPage = 1;
+    const numberOfPages = Math.ceil(numberOfItems / numberPerPage);
+    function accomodatePage(clickedPage) {
+        if (clickedPage <= 1) {
+            return clickedPage + 1;
+        }
+        if (clickedPage >= numberOfPages) {
+            return clickedPage - 1;
+        }
+        return clickedPage;
+    }
+    function buildPagination(clickedPage) {
+        $('.paginator').empty();
+        const currPageNum = accomodatePage(clickedPage);
+        if (numberOfPages >= 3) {
+            for (let i = -1; i < 2; i++) {
+                $('.paginator').append(`<button class="btn btn-primary" value="${currPageNum + i}">${currPageNum + i}</button>`);
+            }
+        }
+        else {
+            for (let i = 0; i < numberOfPages; i++) {
+                $('.paginator').append(`<button class="btn btn-primary" value="${i + 1}">${i + 1}</button>`);
+            }
+        }
+    }
+    function buildPage(currPage) {
+        const trimStart = (currPage - 1) * numberPerPage;
+        const trimEnd = trimStart + numberPerPage;
+        $('.content').empty().append(listArray.slice(trimStart, trimEnd));
+    }
+    $(document).ready(function () {
+        buildPage(1);
+        buildPagination(currentPage);
+        $('.paginator').on('click', 'button', function () {
+            var clickedPage = parseInt($(this).val());
+            buildPagination(clickedPage);
+            buildPage(clickedPage);
+        });
+    });
+}

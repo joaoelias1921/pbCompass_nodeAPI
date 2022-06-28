@@ -79,6 +79,9 @@
     justify-content: space-evenly;
     align-items: flex-start;
     flex-direction: row;
+    .list-none {
+        display: none;
+    }
     .users-container {
         width: 80%;
         display: flex;
