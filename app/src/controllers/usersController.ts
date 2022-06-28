@@ -12,7 +12,7 @@ class UserController {
 
         users.findById(id, (err, users) => {
             if(err) {
-                res.status(404).send({message: `${err.message} - User not found!`});
+                res.status(404).send({message: `${err.message} - (404) User not found!`});
             } else {
                 res.status(200).send(users);
             }
@@ -24,7 +24,7 @@ class UserController {
 
         user.save((err) => {
             if(err) {
-                res.status(500).send({message: `${err.message} - Something went wrong, the user has not been added!`});
+                res.status(500).send({message: `${err.message} - (500) Something went wrong, the user has not been added!`});
             } else {
                 res.status(201).send(user.toJSON());
             }
@@ -36,9 +36,9 @@ class UserController {
 
         users.findByIdAndUpdate(id, {$set: req.body}, (err) => {
             if(!err) {
-                res.status(200).send({message: "User updated successfully!"});
+                res.status(200).send({message: "(200) User updated successfully!"});
             } else {
-                res.status(500).send({message: err.message});
+                res.status(404).send({message: `${err.message} - (404) User not found!`});
             }
         });
     }
@@ -48,9 +48,9 @@ class UserController {
 
         users.findByIdAndDelete(id, (err) => {
             if(!err) {
-                res.status(200).send({message: "User deleted sucessfully!"});
+                res.status(204).send({message: "(204) User deleted sucessfully!"});
             } else {
-                res.status(500).send({message: err.message});
+                res.status(404).send({message: `${err.message} - (404) User not found!`});
             }
         });
     }

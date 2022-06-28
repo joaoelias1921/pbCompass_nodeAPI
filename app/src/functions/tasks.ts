@@ -1,6 +1,6 @@
 
 function fetchTasks() {
-    fetch('http://localhost:3000/tasks')
+    fetch('http://localhost:3000/api/v1/tasks')
     .then(function(response){
         return response.json();
     })
@@ -37,35 +37,46 @@ return tasks.map(function(task) {
     ul.appendChild(description);
     ul.appendChild(date);
     ul.appendChild(user);
-    document.querySelector(".tasks-container")?.appendChild(ul);
     ul.appendChild(edit);
     ul.appendChild(remove);
+    document.querySelector(".list-none")?.appendChild(ul);
+    taskPaginate();
 });
 }
 
 
 function addTask() {
-    const description = document.getElementById('description')! as HTMLInputElement;
-    const datetime = document.getElementById('time')! as HTMLInputElement;
-    const user = document.getElementById('user')! as HTMLInputElement;
+    event?.preventDefault();
 
-    let data = {
-        description: `${description.value}`, 
-        date: `${datetime.value}`, 
-        user: `${user.value}`
+    if(!validateTaskForm()) {
+        let rules = document.querySelector(".task-rules")! as HTMLElement;
+        rules.style.display = "flex";
+        return;
+    }else {
+        const description = document.getElementById('description')! as HTMLInputElement;
+        const datetime = document.getElementById('time')! as HTMLInputElement;
+        const user = document.getElementById('user')! as HTMLInputElement;
+
+        let data = {
+            description: `${description.value}`, 
+            date: `${datetime.value}`, 
+            user: `${user.value}`
+        }
+
+        fetch('http://localhost:3000/api/v1/tasks', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json) {
+            console.log(json);
+        });
+
+        window.location.reload();
     }
-
-    fetch('http://localhost:3000/tasks', {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(json) {
-        console.log(json);
-    });
 }
 
 const taskSearch = document.getElementById("task-search")! as HTMLInputElement;
@@ -97,7 +108,7 @@ taskSearch.addEventListener("input", function(){
 });
 
 function editTask(p: HTMLParamElement) {
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
         method: "GET"
     }).then(function(response){
         return response.json();
@@ -116,27 +127,35 @@ function editTask(p: HTMLParamElement) {
 }
 
 function putTaskData(p: HTMLParamElement) {
-    const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
-    const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
-    const user = document.getElementById('userEdit')! as HTMLInputElement;
+    event?.preventDefault();
 
-    let dataEdit = {
-        description: `${description.value}`, 
-        date: `${datetime.value}`, 
-        user: `${user.value}`
+    if(!validateTaskModalForm()){
+        return;
+    }else {
+        const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
+        const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
+        const user = document.getElementById('userEdit')! as HTMLInputElement;
+
+        let dataEdit = {
+            description: `${description.value}`, 
+            date: `${datetime.value}`, 
+            user: `${user.value}`
+        }
+
+        fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
+            method: "PUT",
+            body: JSON.stringify(dataEdit),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json) {
+            console.log(json);
+        });
+
+        window.location.reload();
     }
-
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataEdit),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(json) {
-        console.log(json);
-    });
 }
 
 function populateInputTask(data) {
@@ -153,7 +172,7 @@ function populateInputTask(data) {
 
 function removeTask(p: HTMLParamElement) {
 
-    fetch(`http://localhost:3000/tasks/${p.id}`, {
+    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
         method: "DELETE"
     })
     .then(res => {
@@ -176,7 +195,7 @@ function removeTask(p: HTMLParamElement) {
 function populateSelectUser() {
     const select = document.querySelector('#user')!;
     
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/api/v1/users')
     .then(function(response){
         return response.json();
     })
@@ -196,7 +215,7 @@ function populateSelectUser() {
 function populateSelectEditUser() {
     const select = document.querySelector('#userEdit')!;
     
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3000/api/v1/users')
     .then(function(response){
         return response.json();
     })
@@ -210,6 +229,55 @@ function populateSelectEditUser() {
             select.appendChild(option);
         }
     });
+}
+
+function taskPaginate() {
+    var cards = document.querySelectorAll(".task-ul");
+    let listArray = Array.from(cards)
+    const numberOfItems = listArray.length
+    const numberPerPage = 3
+    const currentPage = 1
+    
+    const numberOfPages = Math.ceil(numberOfItems/numberPerPage)
+    
+    function accomodatePage(clickedPage) {
+        if (clickedPage <= 1) { return clickedPage + 1}
+        if (clickedPage >= numberOfPages) { return clickedPage -1}
+        return clickedPage
+    }
+    
+    function buildPagination(clickedPage) {
+        $('.paginator').empty()
+        const currPageNum = accomodatePage(clickedPage)
+        if (numberOfPages >= 3) {
+            for (let i=-1; i<2; i++) {
+                $('.paginator').append(`<button class="pagination-btn" value="${currPageNum+i}">${currPageNum+i}</button>`)
+            }
+        } else {
+            for (let i=0; i<numberOfPages; i++) {
+                $('.paginator').append(`<button class="pagination-btn" value="${i+1}">${i+1}</button>`)
+            }
+        }
+    }
+    
+    function buildPage(currPage) {
+        const trimStart = (currPage-1)*numberPerPage
+        const trimEnd = trimStart + numberPerPage
+        $('.content').empty().append(listArray.slice(trimStart, trimEnd))
+    }
+    
+    $(document).ready(function(){
+        buildPage(1)
+        buildPagination(currentPage)
+    
+        $('.paginator').on('click', 'button', function() {
+            var clickedPage = parseInt($(this).val() as string)
+            buildPagination(clickedPage)
+            buildPage(clickedPage)
+        });
+    });
+    
+    
 }
 
 

@@ -7,9 +7,9 @@ const express_1 = __importDefault(require("express"));
 const usersController_js_1 = __importDefault(require("../controllers/usersController.js"));
 const router = express_1.default.Router();
 router
-    .get("/users", usersController_js_1.default.listUsers)
-    .get("/users/:id", usersController_js_1.default.listUserById)
-    .post("/users", usersController_js_1.default.addUser)
-    .put("/users/:id", usersController_js_1.default.updateUser)
-    .delete("/users/:id", usersController_js_1.default.deleteUser);
+    .get("/api/v1/users", usersController_js_1.default.listUsers)
+    .get("/api/v1/users/:id", usersController_js_1.default.listUserById)
+    .post("/api/v1/users", usersController_js_1.default.addUser)
+    .put("/api/v1/users/:id", usersController_js_1.default.updateUser)
+    .delete("/api/v1/users/:id", usersController_js_1.default.deleteUser);
 exports.default = router;
