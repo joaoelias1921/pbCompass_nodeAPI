@@ -42,7 +42,36 @@ function validateDate(date) {
     if(date.value == "") {
         date.style.border = "2px solid red";
     } else {
-        date.style.border = null;
+        let dateString = date.value.split("T")[0];
+        let hoursString = date.value.split("T")[1];
+        let year = parseInt(dateString.split("-")[0]);
+        let month = parseInt(dateString.split("-")[1]);
+        let day = parseInt(dateString.split("-")[2]);
+        let hours = parseInt(hoursString.split(":")[0]);
+        let minutes = parseInt(hoursString.split(":")[1]);
+        let currentDate = new Date();
+
+        if(year < currentDate.getFullYear()) {
+            date.value = "";
+            date.style.border = "2px solid red";
+        }else if(month < (currentDate.getMonth()+1)){
+            date.value = "";
+            date.style.border = "2px solid red";
+        }else if(day < currentDate.getDate()) {
+            date.value = "";
+            date.style.border = "2px solid red";
+        }else if(hours < currentDate.getHours()) {
+            date.value = "";
+            date.style.border = "2px solid red";
+        }else if(hours > currentDate.getHours()) {
+            date.style.border = null;
+            console.log(date.value);
+        }else if(minutes < currentDate.getMinutes()) {
+            date.value = "";
+            date.style.border = "2px solid red";
+        }else{
+            date.style.border = null;
+        }
     }
 }
 
