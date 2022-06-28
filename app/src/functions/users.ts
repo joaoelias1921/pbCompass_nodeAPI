@@ -71,6 +71,8 @@ function addUser() {
     event?.preventDefault();
 
     if(!validateForm()) {
+        let rules = document.querySelector(".user-rules") as HTMLElement;
+        rules.style.display = "flex";
         return;
     }else{
         const name = document.getElementById('name')! as HTMLInputElement;

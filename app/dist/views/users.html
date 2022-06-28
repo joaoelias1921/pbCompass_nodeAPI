@@ -49,6 +49,14 @@
                         <input type="text" name="zipCode" placeholder="Zip Code" id="zipCode" 
                             onfocusout="validateZipCode(this)" data-mask="00000-000" data-mask-selectonfocus="true">
                     </div>
+
+                    <article class="user-rules" style="display: none">
+                        <h2>The following requirements must be met:</h2>
+                        <p><span>1.</span> All fields must be filled.</p>
+                        <p><span>2.</span> You must be 18 years old or older to sign up.</p>
+                        <p><span>3.</span> The email provided must be valid.</p>
+                        <p><span>4.</span> Your password must contain at least 6 digits.</p>
+                    </article>
                     
                     <button class="add-user" onclick="addUser()">Add User</button>
                 </form>

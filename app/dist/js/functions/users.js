@@ -64,6 +64,8 @@ function listUsers(users) {
 function addUser() {
     event === null || event === void 0 ? void 0 : event.preventDefault();
     if (!validateForm()) {
+        let rules = document.querySelector(".user-rules");
+        rules.style.display = "flex";
         return;
     }
     else {

@@ -41,25 +41,34 @@ function listTasks(tasks) {
     });
 }
 function addTask() {
-    const description = document.getElementById('description');
-    const datetime = document.getElementById('time');
-    const user = document.getElementById('user');
-    let data = {
-        description: `${description.value}`,
-        date: `${datetime.value}`,
-        user: `${user.value}`
-    };
-    fetch('http://localhost:3000/api/v1/tasks', {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-        .then(function (response) {
-        return response.json();
-    })
-        .then(function (json) {
-        console.log(json);
-    });
+    event === null || event === void 0 ? void 0 : event.preventDefault();
+    if (!validateTaskForm()) {
+        let rules = document.querySelector(".task-rules");
+        rules.style.display = "flex";
+        return;
+    }
+    else {
+        const description = document.getElementById('description');
+        const datetime = document.getElementById('time');
+        const user = document.getElementById('user');
+        let data = {
+            description: `${description.value}`,
+            date: `${datetime.value}`,
+            user: `${user.value}`
+        };
+        fetch('http://localhost:3000/api/v1/tasks', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+            .then(function (response) {
+            return response.json();
+        })
+            .then(function (json) {
+            console.log(json);
+        });
+        window.location.reload();
+    }
 }
 const taskSearch = document.getElementById("task-search");
 taskSearch.addEventListener("input", function () {
@@ -104,25 +113,32 @@ function editTask(p) {
     });
 }
 function putTaskData(p) {
-    const description = document.getElementById('descriptionEdit');
-    const datetime = document.getElementById('timeEdit');
-    const user = document.getElementById('userEdit');
-    let dataEdit = {
-        description: `${description.value}`,
-        date: `${datetime.value}`,
-        user: `${user.value}`
-    };
-    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataEdit),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
-    })
-        .then(function (response) {
-        return response.json();
-    })
-        .then(function (json) {
-        console.log(json);
-    });
+    event === null || event === void 0 ? void 0 : event.preventDefault();
+    if (!validateTaskModalForm()) {
+        return;
+    }
+    else {
+        const description = document.getElementById('descriptionEdit');
+        const datetime = document.getElementById('timeEdit');
+        const user = document.getElementById('userEdit');
+        let dataEdit = {
+            description: `${description.value}`,
+            date: `${datetime.value}`,
+            user: `${user.value}`
+        };
+        fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
+            method: "PUT",
+            body: JSON.stringify(dataEdit),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+            .then(function (response) {
+            return response.json();
+        })
+            .then(function (json) {
+            console.log(json);
+        });
+        window.location.reload();
+    }
 }
 function populateInputTask(data) {
     const description = document.getElementById('descriptionEdit');

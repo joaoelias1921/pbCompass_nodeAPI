@@ -45,27 +45,37 @@ return tasks.map(function(task) {
 
 
 function addTask() {
-    const description = document.getElementById('description')! as HTMLInputElement;
-    const datetime = document.getElementById('time')! as HTMLInputElement;
-    const user = document.getElementById('user')! as HTMLInputElement;
+    event?.preventDefault();
 
-    let data = {
-        description: `${description.value}`, 
-        date: `${datetime.value}`, 
-        user: `${user.value}`
+    if(!validateTaskForm()) {
+        let rules = document.querySelector(".task-rules")! as HTMLElement;
+        rules.style.display = "flex";
+        return;
+    }else {
+        const description = document.getElementById('description')! as HTMLInputElement;
+        const datetime = document.getElementById('time')! as HTMLInputElement;
+        const user = document.getElementById('user')! as HTMLInputElement;
+
+        let data = {
+            description: `${description.value}`, 
+            date: `${datetime.value}`, 
+            user: `${user.value}`
+        }
+
+        fetch('http://localhost:3000/api/v1/tasks', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json) {
+            console.log(json);
+        });
+
+        window.location.reload();
     }
-
-    fetch('http://localhost:3000/api/v1/tasks', {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(json) {
-        console.log(json);
-    });
 }
 
 const taskSearch = document.getElementById("task-search")! as HTMLInputElement;
@@ -116,27 +126,35 @@ function editTask(p: HTMLParamElement) {
 }
 
 function putTaskData(p: HTMLParamElement) {
-    const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
-    const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
-    const user = document.getElementById('userEdit')! as HTMLInputElement;
+    event?.preventDefault();
 
-    let dataEdit = {
-        description: `${description.value}`, 
-        date: `${datetime.value}`, 
-        user: `${user.value}`
+    if(!validateTaskModalForm()){
+        return;
+    }else {
+        const description = document.getElementById('descriptionEdit')! as HTMLInputElement;
+        const datetime = document.getElementById('timeEdit')! as HTMLInputElement;
+        const user = document.getElementById('userEdit')! as HTMLInputElement;
+
+        let dataEdit = {
+            description: `${description.value}`, 
+            date: `${datetime.value}`, 
+            user: `${user.value}`
+        }
+
+        fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
+            method: "PUT",
+            body: JSON.stringify(dataEdit),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json) {
+            console.log(json);
+        });
+
+        window.location.reload();
     }
-
-    fetch(`http://localhost:3000/api/v1/tasks/${p.id}`, {
-        method: "PUT",
-        body: JSON.stringify(dataEdit),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
-    })
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(json) {
-        console.log(json);
-    });
 }
 
 function populateInputTask(data) {

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../styles/style.css">
     <title>API REST</title>
 </head>
-<body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser()">
+<body onload="fetchTasks(); populateSelectUser(); populateSelectEditUser(); execDate()">
     <header>
         <section class="top-section">
             <div class="title-container">
@@ -27,13 +27,19 @@
             <h1>Add a new task here!</h1>
             <div class="form-container">
                 <form>
-                    <input type="text" name="description" placeholder="Description" id="description">
-                    <input type="datetime-local" name="time" id="time">
-                    <select name="user" id="user">
+                    <input type="text" name="description" placeholder="Description" id="description" onfocusout="validateDescription(this)">
+                    <input type="datetime-local" name="time" id="time" onfocusout="validateDate(this)">
+                    <select name="user" id="user" onfocusout="validateUser(this)">
                         <option value="">Select user</option>
                     </select>
+
                     <button class="add-task" onclick="addTask()">Add Task</button>
                 </form>
+                <article class="task-rules" style="display: none">
+                    <h2>The following requirements must be met:</h2>
+                    <p><span>1.</span> All fields must be filled.</p>
+                    <p><span>2.</span> The date provided must be future.</p>
+                </article>
             </div>
         </section>
         <section class="filters-container">
@@ -52,9 +58,9 @@
             <h1>Edit your info here!</h1>
             <form class="modalInput">
                 <div class="modal-row1">
-                    <input type="text" name="description" placeholder="Description" id="descriptionEdit">
-                    <input type="datetime-local" name="time" id="timeEdit">
-                    <select name="user" id="userEdit">
+                    <input type="text" name="description" placeholder="Description" id="descriptionEdit" onfocusout="validateDescription(this)">
+                    <input type="datetime-local" name="time" id="timeEdit" onfocusout="validateDate(this)">
+                    <select name="user" id="userEdit" onfocusout="validateUser(this)">
                         <option value="">Select user</option>
                     </select>
                 </div>
@@ -70,5 +76,6 @@
         </div>
     </div>
     <script src="../js/functions/tasks.js"></script>
+    <script src="../js/functions/tasksFormValidation.js"></script>
 </body>
 </html>
