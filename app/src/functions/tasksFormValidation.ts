@@ -54,22 +54,33 @@ function validateDate(date) {
         if(year < currentDate.getFullYear()) {
             date.value = "";
             date.style.border = "2px solid red";
-        }else if(month < (currentDate.getMonth()+1)){
-            date.value = "";
-            date.style.border = "2px solid red";
-        }else if(day < currentDate.getDate()) {
-            date.value = "";
-            date.style.border = "2px solid red";
-        }else if(hours < currentDate.getHours()) {
-            date.value = "";
-            date.style.border = "2px solid red";
-        }else if(hours > currentDate.getHours()) {
-            date.style.border = null;
-            console.log(date.value);
-        }else if(minutes < currentDate.getMinutes()) {
-            date.value = "";
-            date.style.border = "2px solid red";
-        }else{
+        }else if(year == currentDate.getFullYear()){
+            if(month < (currentDate.getMonth()+1)){
+                date.value = "";
+                date.style.border = "2px solid red";
+            }else if(month == (currentDate.getMonth()+1)) {
+                if(day < currentDate.getDate()) {
+                    date.value = "";
+                    date.style.border = "2px solid red";
+                }else if(day == currentDate.getDate()) {
+                    if(hours < currentDate.getHours()) {
+                        date.value = "";
+                        date.style.border = "2px solid red";
+                    }else if(hours == currentDate.getHours()){
+                        if(minutes <= currentDate.getMinutes()) {
+                            date.value = "";
+                            date.style.border = "2px solid red";
+                        }else {
+                            date.style.border = null;
+                        }
+                    }
+                }else{
+                    date.style.border = null;
+                }
+            }else {
+                date.style.border = null;
+            }
+        }else {
             date.style.border = null;
         }
     }
